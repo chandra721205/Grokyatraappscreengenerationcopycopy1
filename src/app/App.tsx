@@ -21,6 +21,7 @@ import { OnboardingSlides } from '@/app/components/onboarding/OnboardingSlides';
 import { WelcomePostOnboarding } from '@/app/components/onboarding/WelcomePostOnboarding';
 import { GetStarted } from '@/app/components/onboarding/GetStarted';
 import { ComponentLibraryDemo } from '@/app/components/ui/ComponentLibraryDemo';
+import { Toaster } from '@/app/components/ui/sonner';
 import { UserData } from '@/types';
 
 export default function App() {
@@ -64,6 +65,7 @@ export default function App() {
     return (
       <AdminModeProvider>
         <InterestTrackerDemo />
+        <Toaster />
       </AdminModeProvider>
     );
   }
@@ -73,6 +75,7 @@ export default function App() {
     return (
       <AdminModeProvider>
         <ResearchDestinationDemo />
+        <Toaster />
       </AdminModeProvider>
     );
   }
@@ -82,6 +85,7 @@ export default function App() {
     return (
       <AdminModeProvider>
         <AdminDashboard />
+        <Toaster />
       </AdminModeProvider>
     );
   }
@@ -91,6 +95,7 @@ export default function App() {
     return (
       <AdminModeProvider>
         <AdminSystemDemo />
+        <Toaster />
       </AdminModeProvider>
     );
   }
@@ -100,6 +105,7 @@ export default function App() {
     return (
       <AdminModeProvider>
         <DestinationCardDemo />
+        <Toaster />
       </AdminModeProvider>
     );
   }
@@ -109,6 +115,7 @@ export default function App() {
     return (
       <AdminModeProvider>
         <TravelEssentialsMain />
+        <Toaster />
       </AdminModeProvider>
     );
   }
@@ -118,6 +125,7 @@ export default function App() {
     return (
       <AdminModeProvider>
         <TravelEssentialsV2 />
+        <Toaster />
       </AdminModeProvider>
     );
   }
@@ -127,6 +135,7 @@ export default function App() {
     return (
       <AdminModeProvider>
         <CustomTourDemo />
+        <Toaster />
       </AdminModeProvider>
     );
   }
@@ -136,6 +145,7 @@ export default function App() {
     return (
       <AdminModeProvider>
         <ComponentLibraryDemo />
+        <Toaster />
       </AdminModeProvider>
     );
   }
@@ -144,6 +154,7 @@ export default function App() {
     return (
       <AdminModeProvider>
         <MainLayout userData={userData} />
+        <Toaster />
       </AdminModeProvider>
     );
   }
