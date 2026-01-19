@@ -1741,13 +1741,20 @@ function ReviewAndPayStep({ bookingData, activity, onBack, onComplete }: any) {
         )}
       </div>
 
-      {/* Total Amount */}
-      <div className="bg-orange-50 rounded-2xl p-4 mb-6">
-        <div className="flex justify-between items-center">
-          <span className="text-lg font-semibold">[Admin: Total Amount Label]</span>
-          <span className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
-            {activity.price}
-          </span>
+      {/* 🆕 RECTIFIED: Interest Notification Message (removed payment section) */}
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-5 mb-6 border-2 border-purple-200">
+        <div className="flex items-start gap-3">
+          <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+            <Bell className="w-5 h-5 text-white" />
+          </div>
+          <div>
+            <h3 className="font-bold text-purple-900 mb-2 bg-white/60 px-2 py-1 rounded inline-block">
+              [Admin: Deal Notification Title]
+            </h3>
+            <p className="text-sm text-purple-800 bg-white/40 px-2 py-1 rounded">
+              [Admin: We'll notify you when admin-published adventures match your preferences. You'll receive exclusive deals and budget-friendly options via your preferred notification method.]
+            </p>
+          </div>
         </div>
       </div>
 
