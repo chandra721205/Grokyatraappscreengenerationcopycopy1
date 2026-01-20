@@ -31,6 +31,7 @@ import { Button } from '@/app/components/ui/button';
 import { Badge } from '@/app/components/ui/badge';
 import { Switch } from '@/app/components/ui/switch';
 import { toast } from 'sonner';
+import { HinduPilgrimsFlow } from '@/app/components/categories/HinduPilgrimsFlow';
 
 // ========================================
 // DEVOTIONAL TOURISM - RECTIFIED
@@ -64,6 +65,7 @@ type ReligiousCategory =
 
 type FlowScreen = 
   | 'main'
+  | 'hindu-flow'
   | 'category-detail'
   | 'google-results'
   | 'youtube-results'
@@ -289,13 +291,22 @@ export function DevotionalTourismHub({ onBack }: DevotionalTourismHubProps) {
   };
 
   const handleCategoryClick = (categoryId: ReligiousCategory) => {
-    setCurrentCategory(categoryId);
-    setCurrentScreen('category-detail');
+    // Hindu Pilgrims gets its own dedicated flow
+    if (categoryId === 'hindu') {
+      setCurrentCategory(categoryId);
+      setCurrentScreen('hindu-flow');
+    } else {
+      setCurrentCategory(categoryId);
+      setCurrentScreen('category-detail');
+    }
   };
 
   const handleBackNavigation = () => {
     if (currentScreen === 'main') {
       onBack();
+    } else if (currentScreen === 'hindu-flow') {
+      setCurrentScreen('main');
+      setCurrentCategory(null);
     } else if (currentScreen === 'category-detail') {
       setCurrentScreen('main');
       setCurrentCategory(null);
@@ -325,6 +336,11 @@ export function DevotionalTourismHub({ onBack }: DevotionalTourismHubProps) {
 
   // Render appropriate screen based on flow
   const currentCat = currentCategory ? religiousCategories.find(c => c.id === currentCategory)! : null;
+
+  // Hindu Pilgrims gets dedicated flow
+  if (currentScreen === 'hindu-flow') {
+    return <HinduPilgrimsFlow onBack={handleBackNavigation} />;
+  }
 
   if (currentScreen === 'google-results') {
     return <GoogleResultsScreen onBack={handleBackNavigation} category={currentCat} />;
