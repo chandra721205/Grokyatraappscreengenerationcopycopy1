@@ -571,6 +571,12 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
   const [selectedCircuits, setSelectedCircuits] = useState<HinduCircuit[]>([]);
   const [showGrokConfirmation, setShowGrokConfirmation] = useState(false);
   const [grokTyping, setGrokTyping] = useState(false);
+  
+  // Notification Preferences State
+  const [notifyDeals, setNotifyDeals] = useState(false);
+  const [notifyBudget, setNotifyBudget] = useState(false);
+  const [notifyFestivals, setNotifyFestivals] = useState(false);
+  const [notificationChannel, setNotificationChannel] = useState<'whatsapp' | 'sms' | 'email'>('whatsapp');
 
   const handleGoogleMaps = (query: string) => {
     window.open(`https://www.google.com/maps/search/${encodeURIComponent(query + ' temples india')}`, '_blank');
@@ -1432,23 +1438,59 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
                         }`} />
                       </div>
 
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleToggleInterest(circuit.id);
-                        }}
-                        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-md ${
-                          savedInterests.includes(circuit.id)
-                            ? 'bg-pink-100'
-                            : circuit.isFeatured ? 'bg-white/20' : 'bg-gray-100'
-                        }`}
-                      >
-                        <Heart className={`w-5 h-5 ${
-                          savedInterests.includes(circuit.id)
-                            ? 'text-pink-600 fill-pink-600'
-                            : circuit.isFeatured ? 'text-white' : 'text-gray-600'
-                        }`} />
-                      </button>
+                      <div className="flex items-center gap-2">
+                        {/* YouTube Button */}
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toast.success(`▶️ Opening YouTube videos for ${circuit.name}`);
+                          }}
+                          className={`w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-md ${
+                            circuit.isFeatured ? 'bg-white/20 hover:bg-white/30' : 'bg-red-50 hover:bg-red-100'
+                          }`}
+                          title="Watch Videos"
+                        >
+                          <Youtube className={`w-4 h-4 ${
+                            circuit.isFeatured ? 'text-white' : 'text-red-600'
+                          }`} />
+                        </button>
+
+                        {/* Google Search Button */}
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            toast.success(`🗺️ Opening Google Maps for ${circuit.name}`);
+                          }}
+                          className={`w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-md ${
+                            circuit.isFeatured ? 'bg-white/20 hover:bg-white/30' : 'bg-blue-50 hover:bg-blue-100'
+                          }`}
+                          title="Search on Google"
+                        >
+                          <Globe className={`w-4 h-4 ${
+                            circuit.isFeatured ? 'text-white' : 'text-blue-600'
+                          }`} />
+                        </button>
+
+                        {/* Heart/Save Button */}
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleToggleInterest(circuit.id);
+                          }}
+                          className={`w-10 h-10 rounded-full flex items-center justify-center transition-all shadow-md ${
+                            savedInterests.includes(circuit.id)
+                              ? 'bg-pink-100'
+                              : circuit.isFeatured ? 'bg-white/20' : 'bg-gray-100'
+                          }`}
+                          title="Save Interest"
+                        >
+                          <Heart className={`w-5 h-5 ${
+                            savedInterests.includes(circuit.id)
+                              ? 'text-pink-600 fill-pink-600'
+                              : circuit.isFeatured ? 'text-white' : 'text-gray-600'
+                          }`} />
+                        </button>
+                      </div>
                     </div>
 
                     <AdminEditable label={`ADMIN_Circuit${index + 1}_Title`} inline>
@@ -1563,6 +1605,30 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
                 <p className="text-white text-xs font-bold">👥 Groups</p>
               </div>
             </div>
+          </motion.div>
+        </div>
+
+        {/* ========================================
+            MORE WAYS TO EXPLORE - SECTION HEADER
+            ======================================== */}
+        <div className="mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="bg-gradient-to-r from-purple-50 via-pink-50 to-orange-50 rounded-3xl p-6 border-2 border-purple-100 shadow-lg mb-6"
+          >
+            <div className="flex items-center justify-center gap-3 mb-2">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center shadow-lg">
+                <Gem className="w-6 h-6 text-white" />
+              </div>
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                More Ways to Explore
+              </h2>
+            </div>
+            <p className="text-center text-gray-600 text-sm">
+              Discover hidden gems, browse by location or deity, and explore curated packages
+            </p>
           </motion.div>
         </div>
 
@@ -2217,8 +2283,8 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
             </Button>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-4 border border-purple-200">
-            <div className="flex items-center gap-3 mb-3">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 border border-purple-200">
+            <div className="flex items-center gap-3 mb-4">
               <Bookmark className="w-5 h-5 text-purple-600" />
               <p className="text-sm font-bold text-gray-900">Save Your Interests</p>
             </div>
@@ -2227,8 +2293,93 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
               placeholder="Note places you'd like to visit..."
               value={interestNotes}
               onChange={(e) => setInterestNotes(e.target.value)}
-              className="h-10 text-sm bg-white border-purple-200"
+              className="h-10 text-sm bg-white border-purple-200 mb-4"
             />
+            
+            {/* Notification Preferences */}
+            <div className="space-y-3 mb-4">
+              <p className="text-xs font-bold text-gray-700 uppercase tracking-wider">Notification Preferences</p>
+              <div className="flex items-center justify-between p-3 bg-purple-50 rounded-xl border border-purple-100">
+                <div className="flex items-center gap-2">
+                  <Bell className="w-4 h-4 text-purple-600" />
+                  <span className="text-xs text-gray-700">Notify me about deals</span>
+                </div>
+                <Switch checked={notifyDeals} onCheckedChange={setNotifyDeals} />
+              </div>
+              <div className="flex items-center justify-between p-3 bg-purple-50 rounded-xl border border-purple-100">
+                <div className="flex items-center gap-2">
+                  <DollarSign className="w-4 h-4 text-purple-600" />
+                  <span className="text-xs text-gray-700">Budget match alerts</span>
+                </div>
+                <Switch checked={notifyBudget} onCheckedChange={setNotifyBudget} />
+              </div>
+              <div className="flex items-center justify-between p-3 bg-purple-50 rounded-xl border border-purple-100">
+                <div className="flex items-center gap-2">
+                  <Calendar className="w-4 h-4 text-purple-600" />
+                  <span className="text-xs text-gray-700">Festival notifications</span>
+                </div>
+                <Switch checked={notifyFestivals} onCheckedChange={setNotifyFestivals} />
+              </div>
+            </div>
+
+            {/* Notification Channel */}
+            <div className="mb-4">
+              <p className="text-xs font-bold text-gray-700 mb-2">Preferred Channel</p>
+              <div className="grid grid-cols-3 gap-2">
+                <button 
+                  onClick={() => setNotificationChannel('whatsapp')}
+                  className={`px-3 py-2 text-xs font-bold rounded-lg border-2 transition-all ${
+                    notificationChannel === 'whatsapp' 
+                      ? 'bg-green-100 text-green-700 border-green-300 shadow-md' 
+                      : 'bg-gray-100 text-gray-600 border-gray-300 hover:bg-gray-200'
+                  }`}
+                >
+                  WhatsApp
+                </button>
+                <button 
+                  onClick={() => setNotificationChannel('sms')}
+                  className={`px-3 py-2 text-xs font-bold rounded-lg border-2 transition-all ${
+                    notificationChannel === 'sms' 
+                      ? 'bg-blue-100 text-blue-700 border-blue-300 shadow-md' 
+                      : 'bg-gray-100 text-gray-600 border-gray-300 hover:bg-gray-200'
+                  }`}
+                >
+                  SMS
+                </button>
+                <button 
+                  onClick={() => setNotificationChannel('email')}
+                  className={`px-3 py-2 text-xs font-bold rounded-lg border-2 transition-all ${
+                    notificationChannel === 'email' 
+                      ? 'bg-purple-100 text-purple-700 border-purple-300 shadow-md' 
+                      : 'bg-gray-100 text-gray-600 border-gray-300 hover:bg-gray-200'
+                  }`}
+                >
+                  Email
+                </button>
+              </div>
+            </div>
+
+            {/* Save Button */}
+            <Button
+              onClick={() => {
+                const preferences = [];
+                if (notifyDeals) preferences.push('deals');
+                if (notifyBudget) preferences.push('budget matches');
+                if (notifyFestivals) preferences.push('festivals');
+                
+                const channelName = notificationChannel === 'whatsapp' ? 'WhatsApp' : notificationChannel === 'sms' ? 'SMS' : 'Email';
+                
+                if (preferences.length > 0) {
+                  toast.success(`🔔 Saved! You'll receive ${preferences.join(', ')} notifications via ${channelName} when admin-published pilgrimages match your interest.`);
+                } else {
+                  toast.success('✓ Preferences saved! Enable notifications to receive updates.');
+                }
+              }}
+              className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white rounded-[14px] h-10 text-sm font-bold shadow-md transition-all hover:scale-[1.02]"
+            >
+              <Save className="w-4 h-4 mr-2" />
+              Save Preferences
+            </Button>
           </div>
         </div>
 
@@ -2259,13 +2410,41 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
               </p>
             </div>
 
-            <div className="flex gap-3">
-              <button className="px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white text-xs font-bold rounded-full transition-all backdrop-blur-sm border border-white/30">
-                LIKE THIS
-              </button>
-              <button className="px-5 py-2.5 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white text-xs font-bold rounded-full transition-all shadow-lg flex items-center gap-2">
-                <Save className="w-3.5 h-3.5" />
-                Save Grok Insight
+            <div className="flex flex-col gap-3">
+              <div className="flex gap-3">
+                <button 
+                  onClick={() => {
+                    toast.success('👍 Grok Insight marked as helpful!');
+                  }}
+                  className="px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white text-xs font-bold rounded-full transition-all backdrop-blur-sm border border-white/30"
+                >
+                  LIKE THIS
+                </button>
+                <button 
+                  onClick={() => {
+                    toast.success('💾 Grok Insight saved to your favorites!');
+                  }}
+                  className="px-5 py-2.5 bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white text-xs font-bold rounded-full transition-all shadow-lg flex items-center gap-2"
+                >
+                  <Save className="w-3.5 h-3.5" />
+                  Save Grok Insight
+                </button>
+              </div>
+              <button 
+                onClick={() => {
+                  // Auto-fill Custom Yatra Builder with Grok insights
+                  setPrefilledDeity('Pancha Bhoota');
+                  setTourDates({ 
+                    start: '2024-10-01', 
+                    end: '2024-10-15' 
+                  });
+                  setShowCustomTourBuilder(true);
+                  toast.success('🛕 Applied Grok insights to Custom Yatra Builder!');
+                }}
+                className="w-full px-5 py-2.5 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white text-xs font-bold rounded-full transition-all shadow-lg flex items-center justify-center gap-2"
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                Apply to Custom Yatra
               </button>
             </div>
           </div>
@@ -2761,6 +2940,9 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
               <DialogTitle className="text-2xl font-bold text-gray-900 mb-2">
                 ✓ Request Received!
               </DialogTitle>
+              <DialogDescription className="sr-only">
+                Your custom pilgrimage request has been successfully submitted to Grok AI
+              </DialogDescription>
             </DialogHeader>
 
             <div className="space-y-4 text-left">

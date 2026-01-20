@@ -9,6 +9,7 @@ import { TravelEssentialsMain } from '@/app/components/essentials/TravelEssentia
 import { TravelEssentialsV2 } from '@/app/components/essentials/TravelEssentialsV2';
 import { CustomTourDemo } from '@/app/components/custom-tour/CustomTourDemo';
 import { HinduPilgrimsDemo } from '@/app/components/demos/HinduPilgrimsDemo';
+import { DevotionalLowFiWireframe } from '@/app/components/devotional-lofi/DevotionalLowFiWireframe';
 import { MainLayout } from '@/app/components/layout/MainLayout';
 import { SplashScreen } from '@/app/components/onboarding/SplashScreen';
 import { LanguageSelection } from '@/app/components/onboarding/LanguageSelection';
@@ -40,6 +41,7 @@ export default function App() {
   const [showComponentLibrary, setShowComponentLibrary] = useState(false);
   const [showHinduPilgrims, setShowHinduPilgrims] = useState(false);
   const [showHinduPilgrimsFinal, setShowHinduPilgrimsFinal] = useState(false);
+  const [showDevotionalLofi, setShowDevotionalLofi] = useState(false);
 
   useEffect(() => {
     // Check if user has already onboarded
@@ -173,6 +175,16 @@ export default function App() {
     );
   }
 
+  // Quick access to Devotional Low-Fi Wireframe
+  if (showDevotionalLofi) {
+    return (
+      <AdminModeProvider>
+        <DevotionalLowFiWireframe />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
   if (isOnboarded && currentScreen === 'main') {
     return (
       <AdminModeProvider>
@@ -275,6 +287,15 @@ export default function App() {
           >
             <span className="text-xl">🕉️</span>
             HINDU PILGRIMS ✨
+          </button>
+          <button
+            onClick={() => setShowDevotionalLofi(true)}
+            className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Devotional Low-Fi
           </button>
         </div>
 
