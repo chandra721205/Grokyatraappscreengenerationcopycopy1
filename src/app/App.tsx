@@ -8,6 +8,7 @@ import { InterestTrackerDemo } from '@/app/components/shared/InterestTrackerDemo
 import { TravelEssentialsMain } from '@/app/components/essentials/TravelEssentialsMain';
 import { TravelEssentialsV2 } from '@/app/components/essentials/TravelEssentialsV2';
 import { CustomTourDemo } from '@/app/components/custom-tour/CustomTourDemo';
+import { HinduPilgrimsDemo } from '@/app/components/demos/HinduPilgrimsDemo';
 import { MainLayout } from '@/app/components/layout/MainLayout';
 import { SplashScreen } from '@/app/components/onboarding/SplashScreen';
 import { LanguageSelection } from '@/app/components/onboarding/LanguageSelection';
@@ -37,6 +38,8 @@ export default function App() {
   const [showResearchDemo, setShowResearchDemo] = useState(false);
   const [showInterestDemo, setShowInterestDemo] = useState(false);
   const [showComponentLibrary, setShowComponentLibrary] = useState(false);
+  const [showHinduPilgrims, setShowHinduPilgrims] = useState(false);
+  const [showHinduPilgrimsFinal, setShowHinduPilgrimsFinal] = useState(false);
 
   useEffect(() => {
     // Check if user has already onboarded
@@ -150,6 +153,26 @@ export default function App() {
     );
   }
 
+  // Quick access to Hindu Pilgrims Demo
+  if (showHinduPilgrims) {
+    return (
+      <AdminModeProvider>
+        <HinduPilgrimsDemo />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
+  // Quick access to Hindu Pilgrims Final Demo
+  if (showHinduPilgrimsFinal) {
+    return (
+      <AdminModeProvider>
+        <HinduPilgrimsDemo />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
   if (isOnboarded && currentScreen === 'main') {
     return (
       <AdminModeProvider>
@@ -245,6 +268,13 @@ export default function App() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
             Component Library
+          </button>
+          <button
+            onClick={() => setShowHinduPilgrims(true)}
+            className="bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <span className="text-xl">🕉️</span>
+            HINDU PILGRIMS ✨
           </button>
         </div>
 
