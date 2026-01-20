@@ -12,6 +12,7 @@ import {
   MapPin,
   Star,
   Calendar,
+  CalendarDays,
   Users,
   DollarSign,
   Check,
@@ -47,6 +48,7 @@ import { Button } from '@/app/components/ui/button';
 import { Badge } from '@/app/components/ui/badge';
 import { Switch } from '@/app/components/ui/switch';
 import { toast } from 'sonner';
+import { AdminEditable, AdminPlaceholder, AdminEditableCard, AdminEditableButton } from '@/app/components/AdminEditable';
 import {
   Select,
   SelectContent,
@@ -566,6 +568,7 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
   const [dietaryPrefs, setDietaryPrefs] = useState('');
   const [ritualPrefs, setRitualPrefs] = useState('');
   const [selectedDeities, setSelectedDeities] = useState<string[]>([]);
+  const [selectedCircuits, setSelectedCircuits] = useState<HinduCircuit[]>([]);
   const [showGrokConfirmation, setShowGrokConfirmation] = useState(false);
   const [grokTyping, setGrokTyping] = useState(false);
 
@@ -698,20 +701,24 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
           </div>
 
           <div className="grid grid-cols-2 gap-3 mb-6">
-            <Button
-              onClick={() => handleYouTubeVideos(circuit.name)}
-              className="bg-red-600 hover:bg-red-700 text-white rounded-xl h-12 shadow-lg"
-            >
-              <Youtube className="w-5 h-5 mr-2" />
-              YouTube Videos
-            </Button>
-            <Button
-              onClick={() => handleGoogleMaps(circuit.name)}
-              className="bg-blue-600 hover:bg-blue-700 text-white rounded-xl h-12 shadow-lg"
-            >
-              <Globe className="w-5 h-5 mr-2" />
-              Google Maps
-            </Button>
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                onClick={() => handleYouTubeVideos(circuit.name)}
+                className="w-full bg-red-600 hover:bg-red-700 text-white rounded-xl h-12 shadow-lg hover:shadow-xl transition-all duration-200"
+              >
+                <Youtube className="w-5 h-5 mr-2" />
+                YouTube Videos
+              </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                onClick={() => handleGoogleMaps(circuit.name)}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl h-12 shadow-lg hover:shadow-xl transition-all duration-200"
+              >
+                <Globe className="w-5 h-5 mr-2" />
+                Google Maps
+              </Button>
+            </motion.div>
           </div>
 
           <Button
@@ -1393,21 +1400,24 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
 
           <div className="grid grid-cols-1 gap-5">
             {hinduCircuits.map((circuit, index) => (
-              <motion.div
+              <AdminEditableCard
                 key={circuit.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.08 }}
-                className="group"
+                label={`ADMIN_Circuit${index + 1}_Card_${circuit.id}`}
               >
-                <div
-                  className={`${
-                    circuit.isFeatured
-                      ? `bg-gradient-to-br ${circuit.gradient} shadow-2xl`
-                      : 'bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl'
-                  } rounded-3xl p-6 transition-all duration-300 hover:scale-[1.02] cursor-pointer relative overflow-hidden`}
-                  onClick={() => handleCircuitClick(circuit.id)}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.08 }}
+                  className="group"
                 >
+                  <div
+                    className={`${
+                      circuit.isFeatured
+                        ? `bg-gradient-to-br ${circuit.gradient} shadow-2xl`
+                        : 'bg-white border-2 border-gray-200 shadow-lg hover:shadow-2xl'
+                    } rounded-3xl p-6 transition-all duration-300 cursor-pointer relative overflow-hidden`}
+                    onClick={() => handleCircuitClick(circuit.id)}
+                  >
                   <div className="absolute top-0 right-0 w-32 h-32 opacity-10">
                     <circuit.icon className="w-full h-full" />
                   </div>
@@ -1441,62 +1451,77 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
                       </button>
                     </div>
 
-                    <h3 className={`text-xl font-bold mb-1 ${
-                      circuit.isFeatured ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      {circuit.name}
-                    </h3>
-                    <p className={`text-sm mb-3 ${
-                      circuit.isFeatured ? 'text-white/90' : 'text-gray-600'
-                    }`}>
-                      {circuit.subtitle}
-                    </p>
+                    <AdminEditable label={`ADMIN_Circuit${index + 1}_Title`} inline>
+                      <h3 className={`text-xl font-bold mb-1 ${
+                        circuit.isFeatured ? 'text-white' : 'text-gray-900'
+                      }`}>
+                        {circuit.name}
+                      </h3>
+                    </AdminEditable>
+                    
+                    <AdminEditable label={`ADMIN_Circuit${index + 1}_Subtitle`} inline>
+                      <p className={`text-sm mb-3 ${
+                        circuit.isFeatured ? 'text-white/90' : 'text-gray-600'
+                      }`}>
+                        {circuit.subtitle}
+                      </p>
+                    </AdminEditable>
 
-                    <p className={`text-xs mb-4 leading-relaxed ${
-                      circuit.isFeatured ? 'text-white/80' : 'text-gray-500'
-                    }`}>
-                      {circuit.description}
-                    </p>
+                    <AdminEditable label={`ADMIN_Circuit${index + 1}_Description`} inline>
+                      <p className={`text-xs mb-4 leading-relaxed ${
+                        circuit.isFeatured ? 'text-white/80' : 'text-gray-500'
+                      }`}>
+                        {circuit.description}
+                      </p>
+                    </AdminEditable>
 
                     <div className="flex items-center gap-2 mb-4">
-                      <div className={`${
-                        circuit.isFeatured ? 'bg-white/20' : circuit.tagBg
-                      } px-3 py-1.5 rounded-lg`}>
-                        <span className={`text-[10px] font-bold uppercase tracking-wider ${
-                          circuit.isFeatured ? 'text-white' : circuit.tagText
-                        }`}>
-                          {circuit.tag}
-                        </span>
-                      </div>
-                      <div className={`${
-                        circuit.isFeatured ? 'bg-white/10' : 'bg-gray-100'
-                      } px-3 py-1.5 rounded-lg`}>
-                        <span className={`text-[10px] font-semibold ${
-                          circuit.isFeatured ? 'text-white/90' : 'text-gray-600'
-                        }`}>
-                          Dedicated to: {circuit.dedication}
-                        </span>
-                      </div>
+                      <AdminEditable label={`ADMIN_Circuit${index + 1}_Tag`} inline>
+                        <div className={`${
+                          circuit.isFeatured ? 'bg-white/20' : circuit.tagBg
+                        } px-3 py-1.5 rounded-lg`}>
+                          <span className={`text-[10px] font-bold uppercase tracking-wider ${
+                            circuit.isFeatured ? 'text-white' : circuit.tagText
+                          }`}>
+                            {circuit.tag}
+                          </span>
+                        </div>
+                      </AdminEditable>
+                      
+                      <AdminEditable label={`ADMIN_Circuit${index + 1}_Dedication`} inline>
+                        <div className={`${
+                          circuit.isFeatured ? 'bg-white/10' : 'bg-gray-100'
+                        } px-3 py-1.5 rounded-lg`}>
+                          <span className={`text-[10px] font-semibold ${
+                            circuit.isFeatured ? 'text-white/90' : 'text-gray-600'
+                          }`}>
+                            Dedicated to: {circuit.dedication}
+                          </span>
+                        </div>
+                      </AdminEditable>
                     </div>
 
                     {/* EXACT FIGMA DESIGN: Single View Details Button */}
-                    <Button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleCircuitClick(circuit.id);
-                      }}
-                      className={`w-full rounded-[14px] h-11 font-bold text-sm ${
-                        circuit.isFeatured
-                          ? 'bg-white text-[#f54900] hover:bg-gray-100'
-                          : 'bg-gradient-to-r from-[#ff6900] to-[#e7000b] text-white hover:from-[#ff7a1a] hover:to-[#f0111b]'
-                      } shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] transition-all flex items-center justify-center`}
-                    >
-                      <span>View Details</span>
-                      <ChevronRight className="w-4 h-4 ml-1" />
-                    </Button>
+                    <AdminEditable label={`ADMIN_Circuit${index + 1}_ButtonLink`} inline>
+                      <Button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleCircuitClick(circuit.id);
+                        }}
+                        className={`w-full rounded-[14px] h-11 font-bold text-sm ${
+                          circuit.isFeatured
+                            ? 'bg-white text-[#f54900] hover:bg-gray-100'
+                            : 'bg-gradient-to-r from-[#ff6900] to-[#e7000b] text-white hover:from-[#ff7a1a] hover:to-[#f0111b]'
+                        } shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] transition-all flex items-center justify-center`}
+                      >
+                        <span>View Details</span>
+                        <ChevronRight className="w-4 h-4 ml-1" />
+                      </Button>
+                    </AdminEditable>
                   </div>
                 </div>
               </motion.div>
+              </AdminEditableCard>
             ))}
           </div>
         </div>
@@ -2181,14 +2206,14 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
               className="bg-[#e7000b] hover:bg-[#c7000a] text-white rounded-[14px] h-12 font-bold shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] transition-all hover:scale-[1.02]"
             >
               <Youtube className="w-4 h-4 mr-2" />
-              Watch Videos
+              ▶️ Watch Videos
             </Button>
             <Button
               onClick={() => handleGoogleMaps('hindu sacred temples')}
               className="bg-[#155DFC] hover:bg-[#0d4ad6] text-white rounded-[14px] h-12 font-bold shadow-[0px_10px_15px_-3px_rgba(0,0,0,0.1),0px_4px_6px_-4px_rgba(0,0,0,0.1)] transition-all hover:scale-[1.02]"
             >
               <Globe className="w-4 h-4 mr-2" />
-              Explore on Map
+              🗺️ Explore on Map
             </Button>
           </div>
 
@@ -2272,10 +2297,10 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
               Build Your Custom Pilgrimage
             </DialogTitle>
             <DialogDescription>
-              {tourBuilderStep === 1 && 'Step 1 of 4: Basic Details'}
-              {tourBuilderStep === 2 && 'Step 2 of 4: Special Requirements'}
-              {tourBuilderStep === 3 && 'Step 3 of 4: Deity Focus'}
-              {tourBuilderStep === 4 && 'Step 4 of 4: Review & Submit'}
+              {tourBuilderStep === 1 && 'Step 1 of 4: Basics'}
+              {tourBuilderStep === 2 && 'Step 2 of 4: Special Needs'}
+              {tourBuilderStep === 3 && 'Step 3 of 4: Spiritual Focus'}
+              {tourBuilderStep === 4 && 'Step 4 of 4: Submit'}
             </DialogDescription>
           </DialogHeader>
 
@@ -2441,26 +2466,111 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
             </div>
           )}
 
-          {/* STEP 3: DEITY FOCUS */}
+          {/* STEP 3: SPIRITUAL FOCUS */}
           {tourBuilderStep === 3 && (
             <div className="space-y-4">
+              {/* Primary Deity */}
               <div className="border-2 border-dashed border-blue-200 rounded-xl p-4 bg-blue-50">
-                <h4 className="font-bold text-sm mb-3">Select Deity Focus</h4>
+                <h4 className="font-bold text-sm mb-3 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-blue-600" />
+                  Primary Deity Focus
+                </h4>
+                <p className="text-xs text-blue-600 mb-2">ADMIN_Primary_Deity_Label</p>
                 {prefilledDeity && (
                   <div className="mb-3 p-3 bg-blue-100 rounded-lg border border-blue-300">
-                    <p className="text-xs text-blue-700 mb-1">Pre-selected Deity:</p>
+                    <p className="text-xs text-blue-700 mb-1">Pre-selected from previous page:</p>
                     <div className="flex items-center gap-2">
                       <span className="text-2xl">{deityCategories.find(d => d.id === prefilledDeity)?.emoji}</span>
                       <span className="font-bold text-sm">{deityCategories.find(d => d.id === prefilledDeity)?.name}</span>
                     </div>
                   </div>
                 )}
-                <p className="text-xs text-gray-600 mb-3">Add additional deities (optional):</p>
-                <div className="space-y-2 max-h-64 overflow-y-auto">
+                <Select 
+                  value={selectedDeities[0] || ''} 
+                  onValueChange={(value) => {
+                    if (value && !selectedDeities.includes(value)) {
+                      setSelectedDeities([value, ...selectedDeities.filter(id => id !== value)]);
+                    }
+                  }}
+                >
+                  <SelectTrigger className="bg-white border-blue-300">
+                    <SelectValue placeholder="[Admin: Select primary deity]" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {deityCategories.map((deity) => (
+                      <SelectItem key={deity.id} value={deity.id}>
+                        <div className="flex items-center gap-2">
+                          <span>{deity.emoji}</span>
+                          <span>{deity.name}</span>
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Include Circuits */}
+              <div className="border-2 border-dashed border-orange-200 rounded-xl p-4 bg-orange-50">
+                <h4 className="font-bold text-sm mb-3 flex items-center gap-2">
+                  <Award className="w-4 h-4 text-orange-600" />
+                  Include Sacred Circuits
+                </h4>
+                <p className="text-xs text-orange-600 mb-3">ADMIN_Circuits_Selection_Label</p>
+                <p className="text-xs text-gray-600 mb-3">[Admin: Select which circuits to include in your pilgrimage]</p>
+                <div className="space-y-2 max-h-80 overflow-y-auto">
+                  {hinduCircuits.map((circuit) => (
+                    <label
+                      key={circuit.id}
+                      className="flex items-start gap-3 bg-white p-3 rounded-lg cursor-pointer hover:bg-orange-50 transition-all border border-orange-100"
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedCircuits.includes(circuit.id)}
+                        onChange={(e) => {
+                          if (e.target.checked) {
+                            setSelectedCircuits([...selectedCircuits, circuit.id]);
+                          } else {
+                            setSelectedCircuits(selectedCircuits.filter(id => id !== circuit.id));
+                          }
+                        }}
+                        className="w-4 h-4 mt-1"
+                      />
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <circuit.icon className="w-4 h-4 text-orange-600" />
+                          <span className="text-sm font-bold">{circuit.name}</span>
+                          {circuit.tag && (
+                            <Badge className="text-[10px] px-2 py-0 bg-orange-100 text-orange-700 border-orange-300">
+                              {circuit.tag}
+                            </Badge>
+                          )}
+                        </div>
+                        <p className="text-xs text-gray-600">{circuit.subtitle}</p>
+                        <p className="text-xs text-gray-500 mt-1">{circuit.description}</p>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+                <div className="mt-3 p-2 bg-orange-100 rounded-lg border border-dashed border-orange-300">
+                  <p className="text-xs text-orange-700 text-center">
+                    💡 Selected circuits: <span className="font-bold">{selectedCircuits.length}</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* Additional Deities (Optional) */}
+              <div className="border-2 border-dashed border-purple-200 rounded-xl p-4 bg-purple-50">
+                <h4 className="font-bold text-sm mb-3 flex items-center gap-2">
+                  <Heart className="w-4 h-4 text-purple-600" />
+                  Additional Deities (Optional)
+                </h4>
+                <p className="text-xs text-purple-600 mb-3">ADMIN_Additional_Deities_Label</p>
+                <p className="text-xs text-gray-600 mb-3">[Admin: Select other deities to include]</p>
+                <div className="space-y-2 max-h-48 overflow-y-auto">
                   {deityCategories.map((deity) => (
                     <label
                       key={deity.id}
-                      className="flex items-center gap-3 bg-white p-3 rounded-lg cursor-pointer hover:bg-blue-50 transition-all"
+                      className="flex items-center gap-3 bg-white p-3 rounded-lg cursor-pointer hover:bg-purple-50 transition-all"
                     >
                       <input
                         type="checkbox"
@@ -2524,15 +2634,42 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
                   <div className="bg-white p-3 rounded-lg">
                     <p className="text-xs text-gray-500 mb-2">Selected Deities</p>
                     <div className="flex flex-wrap gap-2">
-                      {selectedDeities.map(id => {
-                        const deity = deityCategories.find(d => d.id === id);
-                        return (
-                          <div key={id} className="flex items-center gap-1 bg-blue-50 px-2 py-1 rounded-lg border border-blue-200">
-                            <span className="text-sm">{deity?.emoji}</span>
-                            <span className="text-xs font-medium">{deity?.name}</span>
-                          </div>
-                        );
-                      })}
+                      {selectedDeities.length > 0 ? (
+                        selectedDeities.map(id => {
+                          const deity = deityCategories.find(d => d.id === id);
+                          return (
+                            <div key={id} className="flex items-center gap-1 bg-blue-50 px-2 py-1 rounded-lg border border-blue-200">
+                              <span className="text-sm">{deity?.emoji}</span>
+                              <span className="text-xs font-medium">{deity?.name}</span>
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <span className="text-sm text-gray-500">None selected</span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="bg-white p-3 rounded-lg">
+                    <p className="text-xs text-gray-500 mb-2">Selected Circuits</p>
+                    <div className="space-y-2">
+                      {selectedCircuits.length > 0 ? (
+                        selectedCircuits.map(circuitId => {
+                          const circuit = hinduCircuits.find(c => c.id === circuitId);
+                          if (!circuit) return null;
+                          return (
+                            <div key={circuitId} className="flex items-center gap-2 bg-orange-50 px-3 py-2 rounded-lg border border-orange-200">
+                              <circuit.icon className="w-4 h-4 text-orange-600" />
+                              <span className="text-xs font-medium flex-1">{circuit.name}</span>
+                              <Badge className="text-[10px] px-2 py-0 bg-orange-100 text-orange-700 border-orange-300">
+                                {circuit.tag}
+                              </Badge>
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <span className="text-sm text-gray-500">No circuits selected</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -2541,37 +2678,65 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
           )}
 
           {/* Navigation Buttons */}
-          <div className="flex gap-3 pt-4 border-t">
-            {tourBuilderStep > 1 && (
+          <div className="space-y-3 pt-4 border-t">
+            <div className="flex gap-3">
+              {tourBuilderStep > 1 && (
+                <Button
+                  variant="outline"
+                  onClick={() => setTourBuilderStep(tourBuilderStep - 1)}
+                  className="flex-1"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back
+                </Button>
+              )}
+              {tourBuilderStep < 4 ? (
+                <Button
+                  onClick={() => setTourBuilderStep(tourBuilderStep + 1)}
+                  className="flex-1 bg-gradient-to-r from-orange-500 to-red-600 text-white hover:from-orange-600 hover:to-red-700"
+                >
+                  Next Step
+                  <ChevronRight className="w-4 h-4 ml-2" />
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => {
+                    setShowCustomTourBuilder(false);
+                    setShowGrokConfirmation(true);
+                    setGrokTyping(true);
+                    setTimeout(() => setGrokTyping(false), 3000);
+                  }}
+                  className="flex-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white hover:shadow-xl"
+                >
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  Request Customization with Grok AI →
+                </Button>
+              )}
+            </div>
+            
+            {/* Save for Later Button - Shows on Step 4 */}
+            {tourBuilderStep === 4 && (
               <Button
                 variant="outline"
-                onClick={() => setTourBuilderStep(tourBuilderStep - 1)}
-                className="flex-1"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back
-              </Button>
-            )}
-            {tourBuilderStep < 4 ? (
-              <Button
-                onClick={() => setTourBuilderStep(tourBuilderStep + 1)}
-                className="flex-1 bg-gradient-to-r from-orange-500 to-red-600 text-white"
-              >
-                Next Step
-                <ChevronRight className="w-4 h-4 ml-2" />
-              </Button>
-            ) : (
-              <Button
                 onClick={() => {
+                  // Save the current form data
+                  const tourData = {
+                    dates: tourDates,
+                    groupSize,
+                    budget: { min: budgetMin, max: budgetMax },
+                    specialNeeds: { seniorCare, medicalAssistance, dietaryPrefs, ritualPrefs },
+                    deities: selectedDeities,
+                    circuits: selectedCircuits,
+                    savedAt: new Date().toISOString()
+                  };
+                  localStorage.setItem('savedPilgrimageTour', JSON.stringify(tourData));
+                  toast.success('✓ Pilgrimage plan saved! You can come back anytime.');
                   setShowCustomTourBuilder(false);
-                  setShowGrokConfirmation(true);
-                  setGrokTyping(true);
-                  setTimeout(() => setGrokTyping(false), 3000);
                 }}
-                className="flex-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white hover:shadow-xl"
+                className="w-full border-2 border-dashed border-gray-300 hover:border-gray-400 hover:bg-gray-50"
               >
-                <Sparkles className="w-4 h-4 mr-2" />
-                Request Customization with Grok AI
+                <Bookmark className="w-4 h-4 mr-2" />
+                💾 Save for Later
               </Button>
             )}
           </div>
@@ -2600,40 +2765,35 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
 
             <div className="space-y-4 text-left">
               <p className="text-gray-700 leading-relaxed px-2 text-center">
-                <span className="font-bold text-purple-600">Received request and will get back to you with budget, 
-                facilities including senior care and specific request details.</span>
-              </p>
-              
-              <p className="text-gray-600 text-sm text-center">
-                <span className="font-bold text-purple-600">Grok AI</span> is analyzing your pilgrimage 
-                preferences. You'll receive a customized itinerary within <span className="font-bold">24 hours</span> including:
+                Thank you! <span className="font-bold text-purple-600">Grok AI</span> has received your custom pilgrimage 
+                request. We'll get back to you within <span className="font-bold">24 hours</span> with:
               </p>
 
               <div className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-5 border-2 border-purple-100">
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                      <span className="text-white text-xs font-bold">•</span>
                     </div>
                     <span className="text-sm font-medium text-gray-800">Detailed budget breakdown</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                      <span className="text-white text-xs font-bold">•</span>
                     </div>
-                    <span className="text-sm font-medium text-gray-800">Senior care facilities</span>
+                    <span className="text-sm font-medium text-gray-800">Senior care facility options</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                      <span className="text-white text-xs font-bold">•</span>
                     </div>
-                    <span className="text-sm font-medium text-gray-800">Temple booking assistance</span>
+                    <span className="text-sm font-medium text-gray-800">Custom itinerary with temple timings</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-6 h-6 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Check className="w-4 h-4 text-white" strokeWidth={3} />
+                      <span className="text-white text-xs font-bold">•</span>
                     </div>
-                    <span className="text-sm font-medium text-gray-800">Travel logistics</span>
+                    <span className="text-sm font-medium text-gray-800">Travel and accommodation details</span>
                   </li>
                 </ul>
               </div>
@@ -2649,7 +2809,7 @@ export function HinduPilgrimsPreserved({ onBack }: HinduPilgrimsPreservedProps) 
                     <Sparkles className="w-5 h-5 text-yellow-300" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-white text-sm font-semibold mb-1">Grok AI is processing...</p>
+                    <p className="text-white text-sm font-semibold mb-1">Grok AI is analyzing your request...</p>
                     <div className="flex gap-1.5">
                       <motion.div
                         animate={{ scale: [1, 1.3, 1] }}
