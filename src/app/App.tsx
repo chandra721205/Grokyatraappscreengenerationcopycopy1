@@ -10,6 +10,8 @@ import { TravelEssentialsV2 } from '@/app/components/essentials/TravelEssentials
 import { CustomTourDemo } from '@/app/components/custom-tour/CustomTourDemo';
 import { HinduPilgrimsDemo } from '@/app/components/demos/HinduPilgrimsDemo';
 import { DevotionalLowFiWireframe } from '@/app/components/devotional-lofi/DevotionalLowFiWireframe';
+import { HealthWellnessDemo } from '@/app/components/wellness/HealthWellnessDemo';
+import { WellnessFlowDemo } from '@/app/components/wellness/WellnessFlowDemo';
 import { MainLayout } from '@/app/components/layout/MainLayout';
 import { SplashScreen } from '@/app/components/onboarding/SplashScreen';
 import { LanguageSelection } from '@/app/components/onboarding/LanguageSelection';
@@ -42,6 +44,8 @@ export default function App() {
   const [showHinduPilgrims, setShowHinduPilgrims] = useState(false);
   const [showHinduPilgrimsFinal, setShowHinduPilgrimsFinal] = useState(false);
   const [showDevotionalLofi, setShowDevotionalLofi] = useState(false);
+  const [showHealthWellness, setShowHealthWellness] = useState(false);
+  const [showWellnessFlow, setShowWellnessFlow] = useState(false);
 
   useEffect(() => {
     // Check if user has already onboarded
@@ -185,6 +189,26 @@ export default function App() {
     );
   }
 
+  // Quick access to Health & Wellness Demo
+  if (showHealthWellness) {
+    return (
+      <AdminModeProvider>
+        <HealthWellnessDemo />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
+  // Quick access to Wellness Interest Flow Demo
+  if (showWellnessFlow) {
+    return (
+      <AdminModeProvider>
+        <WellnessFlowDemo />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
   if (isOnboarded && currentScreen === 'main') {
     return (
       <AdminModeProvider>
@@ -296,6 +320,24 @@ export default function App() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
             Devotional Low-Fi
+          </button>
+          <button
+            onClick={() => setShowHealthWellness(true)}
+            className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Health & Wellness
+          </button>
+          <button
+            onClick={() => setShowWellnessFlow(true)}
+            className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Wellness Interest Flow
           </button>
         </div>
 
