@@ -12,6 +12,14 @@ import { HinduPilgrimsDemo } from '@/app/components/demos/HinduPilgrimsDemo';
 import { DevotionalLowFiWireframe } from '@/app/components/devotional-lofi/DevotionalLowFiWireframe';
 import { HealthWellnessDemo } from '@/app/components/wellness/HealthWellnessDemo';
 import { WellnessFlowDemo } from '@/app/components/wellness/WellnessFlowDemo';
+import { WellnessRequestSystemDemo } from '@/app/components/wellness/WellnessRequestSystemDemo';
+import { WellnessCompleteFlow } from '@/app/components/wellness/WellnessCompleteFlow';
+import { WellnessCompleteIntegration } from '@/app/components/wellness/WellnessCompleteIntegration';
+import { HealthProfileWellnessDemo } from '@/app/components/wellness/WellnessCompleteIntegration';
+import { HeritageCompleteFlow } from '@/app/components/heritage/HeritageCompleteFlow';
+import { HeritageTripDashboardDemo } from '@/app/components/heritage/HeritageTripDashboardDemo';
+import { PostTripFeedbackDemo } from '@/app/components/heritage/PostTripFeedbackDemo';
+import { EcoTourismDemo } from '@/app/components/eco/EcoTourismDemo';
 import { MainLayout } from '@/app/components/layout/MainLayout';
 import { SplashScreen } from '@/app/components/onboarding/SplashScreen';
 import { LanguageSelection } from '@/app/components/onboarding/LanguageSelection';
@@ -46,6 +54,14 @@ export default function App() {
   const [showDevotionalLofi, setShowDevotionalLofi] = useState(false);
   const [showHealthWellness, setShowHealthWellness] = useState(false);
   const [showWellnessFlow, setShowWellnessFlow] = useState(false);
+  const [showWellnessRequestSystem, setShowWellnessRequestSystem] = useState(false);
+  const [showWellnessCompleteFlow, setShowWellnessCompleteFlow] = useState(false);
+  const [showWellnessCompleteIntegration, setShowWellnessCompleteIntegration] = useState(false);
+  const [showHealthProfileWellnessDemo, setShowHealthProfileWellnessDemo] = useState(false);
+  const [showHeritageCompleteFlow, setShowHeritageCompleteFlow] = useState(false);
+  const [showHeritageTripDashboardDemo, setShowHeritageTripDashboardDemo] = useState(false);
+  const [showPostTripFeedbackDemo, setShowPostTripFeedbackDemo] = useState(false);
+  const [showEcoTourismDemo, setShowEcoTourismDemo] = useState(false);
 
   useEffect(() => {
     // Check if user has already onboarded
@@ -209,6 +225,86 @@ export default function App() {
     );
   }
 
+  // Quick access to Wellness Request System Demo
+  if (showWellnessRequestSystem) {
+    return (
+      <AdminModeProvider>
+        <WellnessRequestSystemDemo />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
+  // Quick access to Wellness Complete Flow (INTEGRATED)
+  if (showWellnessCompleteFlow) {
+    return (
+      <AdminModeProvider>
+        <WellnessCompleteFlow />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
+  // Quick access to Wellness Complete Integration
+  if (showWellnessCompleteIntegration) {
+    return (
+      <AdminModeProvider>
+        <WellnessCompleteIntegration />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
+  // Quick access to Health Profile Wellness Demo
+  if (showHealthProfileWellnessDemo) {
+    return (
+      <AdminModeProvider>
+        <HealthProfileWellnessDemo />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
+  // Quick access to Heritage Complete Flow
+  if (showHeritageCompleteFlow) {
+    return (
+      <AdminModeProvider>
+        <HeritageCompleteFlow />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
+  // Quick access to Heritage Trip Dashboard Demo
+  if (showHeritageTripDashboardDemo) {
+    return (
+      <AdminModeProvider>
+        <HeritageTripDashboardDemo />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
+  // Quick access to Post Trip Feedback Demo
+  if (showPostTripFeedbackDemo) {
+    return (
+      <AdminModeProvider>
+        <PostTripFeedbackDemo />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
+  // Quick access to Eco Tourism Demo
+  if (showEcoTourismDemo) {
+    return (
+      <AdminModeProvider>
+        <EcoTourismDemo />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
   if (isOnboarded && currentScreen === 'main') {
     return (
       <AdminModeProvider>
@@ -338,6 +434,72 @@ export default function App() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
             Wellness Interest Flow
+          </button>
+          <button
+            onClick={() => setShowWellnessRequestSystem(true)}
+            className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Wellness Request System
+          </button>
+          <button
+            onClick={() => setShowWellnessCompleteFlow(true)}
+            className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Wellness Complete Flow
+          </button>
+          <button
+            onClick={() => setShowWellnessCompleteIntegration(true)}
+            className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Wellness Complete Integration
+          </button>
+          <button
+            onClick={() => setShowHealthProfileWellnessDemo(true)}
+            className="bg-gradient-to-r from-green-600 to-teal-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Health Profile Wellness Demo
+          </button>
+          <button
+            onClick={() => setShowHeritageCompleteFlow(true)}
+            className="bg-gradient-to-r from-amber-700 to-yellow-700 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <span className="text-xl">🏛️</span>
+            Heritage Complete Flow
+          </button>
+          <button
+            onClick={() => setShowHeritageTripDashboardDemo(true)}
+            className="bg-gradient-to-r from-amber-700 to-yellow-700 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <span className="text-xl">🏛️</span>
+            Heritage Trip Dashboard Demo
+          </button>
+          <button
+            onClick={() => setShowPostTripFeedbackDemo(true)}
+            className="bg-gradient-to-r from-amber-700 to-yellow-700 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <span className="text-xl">🏛️</span>
+            Post Trip Feedback Demo
+          </button>
+          <button
+            onClick={() => setShowEcoTourismDemo(true)}
+            className="bg-gradient-to-r from-green-700 to-lime-700 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Eco Tourism Demo
           </button>
         </div>
 
