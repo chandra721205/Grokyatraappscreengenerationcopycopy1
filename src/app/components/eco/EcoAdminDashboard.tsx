@@ -8,8 +8,10 @@ interface EcoAdminDashboardProps {
   onClose: () => void;
 }
 
+type AdminTab = 'destinations' | 'deals' | 'content' | 'preferences';
+
 export function EcoAdminDashboard({ isOpen, onClose }: EcoAdminDashboardProps) {
-  const [activeTab, setActiveTab] = useState<'destinations' | 'deals' | 'content' | 'preferences'>('destinations');
+  const [activeTab, setActiveTab] = useState<AdminTab>('destinations');
   const [isEditing, setIsEditing] = useState(false);
   const [previewMode, setPreviewMode] = useState(false);
 
@@ -72,14 +74,14 @@ export function EcoAdminDashboard({ isOpen, onClose }: EcoAdminDashboardProps) {
         <div className="max-w-7xl mx-auto px-8">
           <div className="flex gap-4">
             {[
-              { id: 'destinations', label: 'Destinations', icon: '🏞️' },
-              { id: 'deals', label: 'Deals & Alerts', icon: '💰' },
-              { id: 'content', label: 'Content Updates', icon: '📝' },
-              { id: 'preferences', label: 'User Preferences', icon: '⚙️' },
+              { id: 'destinations' as AdminTab, label: 'Destinations', icon: '🏞️' },
+              { id: 'deals' as AdminTab, label: 'Deals & Alerts', icon: '💰' },
+              { id: 'content' as AdminTab, label: 'Content Updates', icon: '📝' },
+              { id: 'preferences' as AdminTab, label: 'User Preferences', icon: '⚙️' },
             ].map(tab => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
+                onClick={() => setActiveTab(tab.id)}
                 className={`px-6 py-4 font-bold text-base flex items-center gap-2 transition-all border-b-4 ${
                   activeTab === tab.id
                     ? 'text-white border-green-500'

@@ -2,11 +2,12 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X, DollarSign, Calendar, Clock, Bell, Check } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { useState } from 'react';
+import { EcoBudgetPreferencesData } from '@/types';
 
 interface EcoBudgetPreferencesProps {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (preferences: any) => void;
+  onSave: (preferences: EcoBudgetPreferencesData) => void;
 }
 
 export function EcoBudgetPreferences({ isOpen, onClose, onSave }: EcoBudgetPreferencesProps) {

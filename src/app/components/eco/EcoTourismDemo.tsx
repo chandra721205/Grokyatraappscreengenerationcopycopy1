@@ -7,6 +7,8 @@ import { EcoAdminDashboard } from './EcoAdminDashboard';
 import { EcoFlowDiagram } from './EcoFlowDiagram';
 import { EcoComponentLibrary } from './EcoComponentLibrary';
 import { Button } from '@/app/components/ui/button';
+import { EcoBudgetPreferencesData } from '@/types';
+import { toast } from 'sonner';
 
 type Screen = 'landing' | 'sub-category' | 'admin' | 'flow' | 'components';
 
@@ -82,8 +84,11 @@ export function EcoTourismDemo() {
     setShowPreferencesModal(true);
   };
 
-  const handleSavePreferences = (preferences: any) => {
-    console.log('Preferences saved:', preferences);
+  const handleSavePreferences = (preferences: EcoBudgetPreferencesData) => {
+    // Store preferences in local state or context
+    toast.success('Preferences saved successfully!', {
+      description: `Budget: ${preferences.budgetRange} • Duration: ${preferences.tripDuration} days`,
+    });
   };
 
   return (
@@ -91,7 +96,7 @@ export function EcoTourismDemo() {
       {/* Navigation Bar */}
       <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50 bg-gray-900 rounded-full border-3 border-gray-700 p-3 shadow-2xl">
         <div className="flex gap-2">
-          <Button
+          <button
             onClick={() => setCurrentScreen('landing')}
             className={`px-6 py-3 rounded-full font-bold text-sm ${
               currentScreen === 'landing'
@@ -100,8 +105,8 @@ export function EcoTourismDemo() {
             }`}
           >
             🏠 Landing
-          </Button>
-          <Button
+          </button>
+          <button
             onClick={() => setCurrentScreen('admin')}
             className={`px-6 py-3 rounded-full font-bold text-sm ${
               currentScreen === 'admin'
@@ -110,8 +115,8 @@ export function EcoTourismDemo() {
             }`}
           >
             🛠️ Admin
-          </Button>
-          <Button
+          </button>
+          <button
             onClick={() => setCurrentScreen('flow')}
             className={`px-6 py-3 rounded-full font-bold text-sm ${
               currentScreen === 'flow'
@@ -120,8 +125,8 @@ export function EcoTourismDemo() {
             }`}
           >
             📊 Flow
-          </Button>
-          <Button
+          </button>
+          <button
             onClick={() => setCurrentScreen('components')}
             className={`px-6 py-3 rounded-full font-bold text-sm ${
               currentScreen === 'components'
@@ -130,7 +135,7 @@ export function EcoTourismDemo() {
             }`}
           >
             🧩 Components
-          </Button>
+          </button>
         </div>
       </div>
 

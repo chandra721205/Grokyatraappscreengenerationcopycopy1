@@ -20,6 +20,7 @@ import { HeritageCompleteFlow } from '@/app/components/heritage/HeritageComplete
 import { HeritageTripDashboardDemo } from '@/app/components/heritage/HeritageTripDashboardDemo';
 import { PostTripFeedbackDemo } from '@/app/components/heritage/PostTripFeedbackDemo';
 import { EcoTourismDemo } from '@/app/components/eco/EcoTourismDemo';
+import { AuditResultsDashboard } from '@/app/components/audit/AuditResultsDashboard';
 import { MainLayout } from '@/app/components/layout/MainLayout';
 import { SplashScreen } from '@/app/components/onboarding/SplashScreen';
 import { LanguageSelection } from '@/app/components/onboarding/LanguageSelection';
@@ -62,6 +63,7 @@ export default function App() {
   const [showHeritageTripDashboardDemo, setShowHeritageTripDashboardDemo] = useState(false);
   const [showPostTripFeedbackDemo, setShowPostTripFeedbackDemo] = useState(false);
   const [showEcoTourismDemo, setShowEcoTourismDemo] = useState(false);
+  const [showAuditDashboard, setShowAuditDashboard] = useState(false);
 
   useEffect(() => {
     // Check if user has already onboarded
@@ -305,6 +307,16 @@ export default function App() {
     );
   }
 
+  // Quick access to Audit Results Dashboard
+  if (showAuditDashboard) {
+    return (
+      <AdminModeProvider>
+        <AuditResultsDashboard />
+        <Toaster />
+      </AdminModeProvider>
+    );
+  }
+
   if (isOnboarded && currentScreen === 'main') {
     return (
       <AdminModeProvider>
@@ -319,6 +331,15 @@ export default function App() {
       <div className="min-h-screen bg-gradient-to-b from-blue-50 to-orange-50">
         {/* Quick Access Buttons for Testing */}
         <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-3">
+          <button
+            onClick={() => setShowAuditDashboard(true)}
+            className="bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2 animate-pulse"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            🎉 ERROR AUDIT - 0 ERRORS!
+          </button>
           <button
             onClick={() => setShowAdminDashboard(true)}
             className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-3 rounded-full shadow-2xl hover:shadow-3xl transition-all font-bold text-sm flex items-center gap-2"

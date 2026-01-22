@@ -30,3 +30,20 @@ export interface HoneymoonInterest {
   priceAlert?: number;
   dateAdded: string;
 }
+
+// Eco-Tourism Types
+export interface EcoBudgetPreferencesData {
+  budgetRange: string;
+  travelDates: string;
+  tripDuration: string;
+  dealAlert: boolean;
+  notificationChannel: string;
+  stayStyle: string[];
+  pace: string;
+  privacy: string;
+  diet: string[];
+  specialRequests: string;
+  accessibility: boolean;
+  medicalSupport: boolean;
+  seniorFriendly: boolean;
+}
