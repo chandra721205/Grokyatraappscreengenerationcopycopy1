@@ -10,6 +10,7 @@ import { Button } from '@/app/components/ui/button';
 import { CategoryHub } from '@/app/components/categories/CategoryHub';
 import { AdventureTourismHub } from '@/app/components/categories/AdventureTourismHub';
 import { DevotionalTourismHub } from '@/app/components/categories/DevotionalTourismHub';
+import { EducationalTourismHub } from '@/app/components/categories/EducationalTourismHub';
 import { SeniorWellnessHub } from '@/app/components/seniors/SeniorWellnessHub';
 import { TravelEssentialsHub } from '@/app/components/essentials/TravelEssentialsHub';
 import { SelfDriveFlow } from '@/app/components/essentials/SelfDriveFlow';
@@ -48,6 +49,7 @@ export function MainHome({ userData, onNavigate, onShowComboTour }: MainHomeProp
   const [showHoneymoonHub, setShowHoneymoonHub] = useState(false);
   const [showAdventureHub, setShowAdventureHub] = useState(false);
   const [showDevotionalHub, setShowDevotionalHub] = useState(false);
+  const [showEducationalHub, setShowEducationalHub] = useState(false);
 
   const handleGoogleSearch = () => {
     const query = searchQuery || 'tourist destinations india';
@@ -67,6 +69,11 @@ export function MainHome({ userData, onNavigate, onShowComboTour }: MainHomeProp
   // Handle Devotional Tourism category
   if (showDevotionalHub) {
     return <DevotionalTourismHub onBack={() => setShowDevotionalHub(false)} />;
+  }
+
+  // Handle Educational Tourism category
+  if (showEducationalHub) {
+    return <EducationalTourismHub onBack={() => setShowEducationalHub(false)} />;
   }
 
   // Handle Honeymoon category
@@ -227,6 +234,8 @@ export function MainHome({ userData, onNavigate, onShowComboTour }: MainHomeProp
                     setShowAdventureHub(true);
                   } else if (category.id === 'devotional') {
                     setShowDevotionalHub(true);
+                  } else if (category.id === 'educational') {
+                    setShowEducationalHub(true);
                   } else {
                     setSelectedCategory(category.id);
                   }
