@@ -59,27 +59,27 @@ const theme = {
 
 // Phase 1: Funding Sources
 const microGrants = [
-  { id: 1, name: '[Admin: Micro-Grant A]', amount: '< ₹15L', discipline: 'All', timeline: '3 months', eligibility: '90%' },
-  { id: 2, name: '[Admin: Micro-Grant B]', amount: '< ₹10L', discipline: 'STEM', timeline: '2 months', eligibility: '75%' },
-  { id: 3, name: '[Admin: Micro-Grant C]', amount: '< ₹12L', discipline: 'Humanities', timeline: '4 months', eligibility: '85%' },
+  { id: 1, name: '[Admin: Micro-Grant A]', amount: '< Rs.15L', discipline: 'All', timeline: '3 months', eligibility: '90%' },
+  { id: 2, name: '[Admin: Micro-Grant B]', amount: '< Rs.10L', discipline: 'STEM', timeline: '2 months', eligibility: '75%' },
+  { id: 3, name: '[Admin: Micro-Grant C]', amount: '< Rs.12L', discipline: 'Humanities', timeline: '4 months', eligibility: '85%' },
 ];
 
 const governmentFellowships = [
-  { id: 1, name: 'DST Inspire Fellowship', eligibility: 'PhD Students', amount: '₹25,000/month', duration: '5 years' },
-  { id: 2, name: 'UGC-JRF', eligibility: 'NET Qualified', amount: '₹31,000/month', duration: '2 years' },
+  { id: 1, name: 'DST Inspire Fellowship', eligibility: 'PhD Students', amount: 'Rs.25,000/month', duration: '5 years' },
+  { id: 2, name: 'UGC-JRF', eligibility: 'NET Qualified', amount: 'Rs.31,000/month', duration: '2 years' },
   { id: 3, name: '[Admin: Fellowship Program]', eligibility: '[Admin: Criteria]', amount: '[Admin: Amount]', duration: '[Admin: Duration]' },
 ];
 
 const corporateSponsors = [
-  { id: 1, name: '[Admin: Corporate Sponsor A]', type: 'CSR', focus: 'Education', typical: '₹50L-₹2Cr' },
-  { id: 2, name: '[Admin: Corporate Sponsor B]', type: 'R&D Partnership', focus: 'Technology', typical: '₹1Cr-₹5Cr' },
+  { id: 1, name: '[Admin: Corporate Sponsor A]', type: 'CSR', focus: 'Education', typical: 'Rs.50L-Rs.2Cr' },
+  { id: 2, name: '[Admin: Corporate Sponsor B]', type: 'R&D Partnership', focus: 'Technology', typical: 'Rs.1Cr-Rs.5Cr' },
 ];
 
 // Phase 2: Timeline Data
 const grantDeadlines = [
-  { name: '[Admin: Grant A]', deadline: 'June 30, 2026', processing: '90 days', amount: '₹50L' },
-  { name: '[Admin: Grant B]', deadline: 'August 15, 2026', processing: '60 days', amount: '₹25L' },
-  { name: '[Admin: Grant C]', deadline: 'September 1, 2026', processing: '45 days', amount: '₹15L' },
+  { name: '[Admin: Grant A]', deadline: 'June 30, 2026', processing: '90 days', amount: 'Rs.50L' },
+  { name: '[Admin: Grant B]', deadline: 'August 15, 2026', processing: '60 days', amount: 'Rs.25L' },
+  { name: '[Admin: Grant C]', deadline: 'September 1, 2026', processing: '45 days', amount: 'Rs.15L' },
 ];
 
 // Phase 3: Risk Factors
@@ -367,7 +367,7 @@ function Phase1_FundingProposal() {
       <div className="rounded-2xl p-6 shadow-xl" style={{ backgroundColor: theme.white }}>
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-bold" style={{ color: theme.primary }}>
-            Micro-Grant Finder (< ₹15L)
+            Micro-Grant Finder (&lt; Rs.15L)
           </h3>
           <Badge style={{ backgroundColor: theme.accent, color: theme.white }}>
             {microGrants.length} Available
@@ -528,7 +528,7 @@ function Phase1_FundingProposal() {
             <div className="flex justify-between items-center mb-2">
               <span className="font-bold">Total Potential Funding:</span>
               <span className="text-xl font-bold" style={{ color: theme.accent }}>
-                ₹{totalPotential.toFixed(2)}L
+                Rs.{totalPotential.toFixed(2)}L
               </span>
             </div>
             <Button
@@ -675,9 +675,9 @@ function Phase2_TimelineStrategy() {
         
         <div className="space-y-3">
           {[
-            { type: 'Major Grant (≥ ₹75L)', hours: '40-60 hrs', tasks: 'Full proposal, budget, references, reviews' },
-            { type: 'Medium Grant (₹25L-₹75L)', hours: '20-35 hrs', tasks: 'Concept note, budget, 2-3 references' },
-            { type: 'Micro Grant (< ₹15L)', hours: '10-15 hrs', tasks: 'Short application, basic budget' },
+            { type: 'Major Grant (≥ Rs.75L)', hours: '40-60 hrs', tasks: 'Full proposal, budget, references, reviews' },
+            { type: 'Medium Grant (Rs.25L-Rs.75L)', hours: '20-35 hrs', tasks: 'Concept note, budget, 2-3 references' },
+            { type: 'Micro Grant (< Rs.15L)', hours: '10-15 hrs', tasks: 'Short application, basic budget' },
             { type: 'Fellowship Application', hours: '15-25 hrs', tasks: 'SOP, CV, research plan, references' },
           ].map((estimate, idx) => (
             <div key={idx} className="p-4 rounded-xl" style={{ backgroundColor: theme.lightGray }}>
@@ -739,7 +739,7 @@ function Phase3_RiskAssessment() {
     );
   };
 
-  const overallSuccessProbability = 92; // For ≥ ₹75L
+  const overallSuccessProbability = 92; // For >= Rs.75L
 
   return (
     <div className="space-y-6">
@@ -777,7 +777,7 @@ function Phase3_RiskAssessment() {
           </div>
           
           <p className="text-xs mt-3 text-center" style={{ color: theme.secondary }}>
-            Based on funding level ≥ ₹75L, preparation quality, and network strength
+            Based on funding level &ge; Rs.75L, preparation quality, and network strength
           </p>
         </div>
 
@@ -1070,10 +1070,10 @@ function Phase5_LogisticsBudget() {
         </h3>
         <div className="grid grid-cols-2 gap-3">
           {[
-            { mode: 'Auto', cost: '₹150', time: '30 min', eco: '⚠️' },
-            { mode: 'Walk', cost: '₹0', time: '60 min', eco: '✅' },
-            { mode: 'Taxi', cost: '₹300', time: '25 min', eco: '⚠️' },
-            { mode: 'Bus', cost: '₹50', time: '45 min', eco: '✅' },
+            { mode: 'Auto', cost: 'Rs.150', time: '30 min', eco: '⚠️' },
+            { mode: 'Walk', cost: 'Rs.0', time: '60 min', eco: '✅' },
+            { mode: 'Taxi', cost: 'Rs.300', time: '25 min', eco: '⚠️' },
+            { mode: 'Bus', cost: 'Rs.50', time: '45 min', eco: '✅' },
           ].map((option, idx) => (
             <div key={idx} className="p-4 rounded-xl border-2" style={{ borderColor: theme.mediumGray, backgroundColor: theme.lightGray }}>
               <h4 className="font-bold text-sm mb-2">{option.mode}</h4>
@@ -1095,7 +1095,7 @@ function Phase5_LogisticsBudget() {
             <div key={idx} className="flex items-center gap-3">
               <Utensils className="w-4 h-4" style={{ color: theme.primary }} />
               <span className="text-sm flex-1">{meal}</span>
-              <Input type="number" placeholder="₹ Amount" className="w-24 h-8 text-xs" />
+              <Input type="number" placeholder="Rs. Amount" className="w-24 h-8 text-xs" />
               <Button className="h-8 px-3 text-xs" style={{ backgroundColor: theme.accent, color: theme.white }}>
                 Log
               </Button>
@@ -1156,13 +1156,13 @@ function Phase5_LogisticsBudget() {
                 return (
                   <tr key={idx} className="border-t" style={{ borderColor: theme.mediumGray }}>
                     <td className="p-2">{row.category}</td>
-                    <td className="p-2 text-right">₹{row.planned}</td>
-                    <td className="p-2 text-right">₹{row.spent}</td>
+                    <td className="p-2 text-right">Rs.{row.planned}</td>
+                    <td className="p-2 text-right">Rs.{row.spent}</td>
                     <td
                       className="p-2 text-right font-bold"
                       style={{ color: variance > 0 ? theme.danger : theme.accent }}
                     >
-                      {variance > 0 ? '+' : ''}₹{variance}
+                      {variance > 0 ? '+' : ''}Rs.{variance}
                     </td>
                   </tr>
                 );
@@ -1200,8 +1200,8 @@ function Phase6_AIOptimization() {
         </h3>
         <div className="space-y-3">
           {[
-            { icon: DollarSign, suggestion: 'Switch to bus for next 3 trips to save ₹450', savings: '₹450' },
-            { icon: Users, suggestion: 'Share equipment with nearby researcher Ankit K.', savings: '₹800' },
+            { icon: DollarSign, suggestion: 'Switch to bus for next 3 trips to save Rs.450', savings: 'Rs.450' },
+            { icon: Users, suggestion: 'Share equipment with nearby researcher Ankit K.', savings: 'Rs.800' },
             { icon: Clock, suggestion: 'Visit Lab B in morning to avoid peak crowds', benefit: 'Time' },
             { icon: MapPin, suggestion: 'Combine Sites C & D visits tomorrow for efficiency', benefit: 'Logistics' },
           ].map((tip, idx) => (
@@ -1278,7 +1278,7 @@ function Phase6_AIOptimization() {
         <div className="space-y-4">
           {[
             { label: 'Overall Progress', actual: 68, projected: 75, unit: '%' },
-            { label: 'Today's Progress', actual: 85, projected: 70, unit: '%' },
+            { label: 'Today Progress', actual: 85, projected: 70, unit: '%' },
             { label: 'Budget Usage', actual: 62, projected: 65, unit: '%' },
           ].map((meter, idx) => (
             <div key={idx}>
@@ -1323,9 +1323,9 @@ function Phase6_AIOptimization() {
           <div className="flex items-start gap-3 mb-3">
             <Sparkles className="w-5 h-5 flex-shrink-0" style={{ color: theme.accent }} />
             <div>
-              <p className="text-sm font-bold mb-1">You're 15% ahead of schedule! 🎉</p>
+              <p className="text-sm font-bold mb-1">You are 15% ahead of schedule! 🎉</p>
               <p className="text-xs" style={{ color: theme.secondary }}>
-                At this pace, you'll complete data collection 2 days early, allowing extra time for analysis.
+                At this pace, you will complete data collection 2 days early, allowing extra time for analysis.
               </p>
             </div>
           </div>
