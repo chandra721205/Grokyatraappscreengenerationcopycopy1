@@ -11,7 +11,8 @@ import { CategoryHub } from '@/app/components/categories/CategoryHub';
 import { AdventureTourismHub } from '@/app/components/categories/AdventureTourismHub';
 import { DevotionalTourismHub } from '@/app/components/categories/DevotionalTourismHub';
 import { EducationalTourismHub } from '@/app/components/categories/EducationalTourismHub';
-import { CorporateMICEHub } from '@/app/components/categories/CorporateMICEHub';
+import { CorporateMICEHubEnhanced } from '@/app/components/categories/CorporateMICEHubEnhanced';
+import { CruiseTourismHub } from '@/app/components/categories/CruiseTourismHub';
 import { SeniorWellnessHub } from '@/app/components/seniors/SeniorWellnessHub';
 import { TravelEssentialsHub } from '@/app/components/essentials/TravelEssentialsHub';
 import { SelfDriveFlow } from '@/app/components/essentials/SelfDriveFlow';
@@ -35,7 +36,7 @@ const categories = [
   { id: 'corporate', icon: Briefcase, name: 'Corporate', gradient: 'from-gray-600 to-slate-700' },
   { id: 'cruise', icon: Ship, name: 'Cruise', gradient: 'from-cyan-500 to-blue-600' },
   { id: 'health', icon: HeartPulse, name: 'Health', gradient: 'from-red-500 to-pink-600' },
-  { id: 'senior', icon: Users, name: 'Senior', gradient: 'from-indigo-500 to-purple-600' },
+  { id: 'senior', icon: Users, name: 'Senior Tourism', gradient: 'from-indigo-500 to-purple-600' },
   { id: 'honeymoon', icon: Heart, name: 'Honeymoon', gradient: 'from-pink-500 to-rose-600' },
   { id: 'sports', icon: Trophy, name: 'Sports', gradient: 'from-yellow-500 to-orange-600' },
   { id: 'self-drive', icon: Car, name: 'Self-Drive', gradient: 'from-orange-400 to-amber-500', featured: true }, // NEW
@@ -52,6 +53,7 @@ export function MainHome({ userData, onNavigate, onShowComboTour }: MainHomeProp
   const [showDevotionalHub, setShowDevotionalHub] = useState(false);
   const [showEducationalHub, setShowEducationalHub] = useState(false);
   const [showCorporateHub, setShowCorporateHub] = useState(false);
+  const [showCruiseHub, setShowCruiseHub] = useState(false);
 
   const handleGoogleSearch = () => {
     const query = searchQuery || 'tourist destinations india';
@@ -80,7 +82,12 @@ export function MainHome({ userData, onNavigate, onShowComboTour }: MainHomeProp
 
   // Handle Corporate & MICE category
   if (showCorporateHub) {
-    return <CorporateMICEHub onBack={() => setShowCorporateHub(false)} />;
+    return <CorporateMICEHubEnhanced onBack={() => setShowCorporateHub(false)} />;
+  }
+
+  // Handle Cruise Tourism category
+  if (showCruiseHub) {
+    return <CruiseTourismHub onBack={() => setShowCruiseHub(false)} />;
   }
 
   // Handle Honeymoon category
@@ -245,6 +252,8 @@ export function MainHome({ userData, onNavigate, onShowComboTour }: MainHomeProp
                     setShowEducationalHub(true);
                   } else if (category.id === 'corporate') {
                     setShowCorporateHub(true);
+                  } else if (category.id === 'cruise') {
+                    setShowCruiseHub(true);
                   } else {
                     setSelectedCategory(category.id);
                   }

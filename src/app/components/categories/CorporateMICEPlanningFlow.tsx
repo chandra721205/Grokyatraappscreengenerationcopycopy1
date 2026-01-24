@@ -24,6 +24,12 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { toast } from 'sonner';
+import { ConferencesConfig } from '@/app/components/categories/corporate/ConferencesConfig';
+import { BoardMeetingsConfig } from '@/app/components/categories/corporate/BoardMeetingsConfig';
+import { IncentiveTripsConfig } from '@/app/components/categories/corporate/IncentiveTripsConfig';
+import { TeamBuildingConfig } from '@/app/components/categories/corporate/TeamBuildingConfig';
+import { TradeShowsConfig } from '@/app/components/categories/corporate/TradeShowsConfig';
+import { TrainingConfig } from '@/app/components/categories/corporate/TrainingConfig';
 
 // ========================================
 // TYPES
@@ -103,8 +109,9 @@ const genericLocations = [
 // MAIN COMPONENT
 // ========================================
 export function CorporateMICEPlanningFlow({ subCategory, onBack }: CorporateMICEPlanningFlowProps) {
-  // Navigation state - 6 steps following business flow
+  // Navigation state - 6 steps following business flow + optional Step 1.5 for advanced config
   const [currentStep, setCurrentStep] = useState(1);
+  const [showAdvancedConfig, setShowAdvancedConfig] = useState(false);
   
   // Form data
   const [formData, setFormData] = useState({
@@ -251,20 +258,36 @@ export function CorporateMICEPlanningFlow({ subCategory, onBack }: CorporateMICE
       </div>
 
       {/* Navigation */}
-      <Button
-        onClick={() => {
-          if (!formData.eventType || !formData.groupSize || !formData.duration || !formData.budgetRange) {
-            toast.error('Please complete all fields');
-            return;
-          }
-          setCurrentStep(2);
-        }}
-        className="w-full h-12 rounded-full text-base font-semibold"
-        style={{ backgroundColor: corporateTheme.accent }}
-      >
-        Continue to Event Details
-        <ChevronRight className="w-5 h-5 ml-2" />
-      </Button>
+      <div className="space-y-3">
+        <Button
+          onClick={() => {
+            if (!formData.eventType || !formData.groupSize || !formData.duration || !formData.budgetRange) {
+              toast.error('Please complete all fields');
+              return;
+            }
+            setShowAdvancedConfig(true);
+          }}
+          className="w-full h-12 rounded-full text-base font-semibold"
+          style={{ backgroundColor: corporateTheme.accent }}
+        >
+          <Sparkles className="w-5 h-5 mr-2" />
+          Advanced Configuration
+          <ChevronRight className="w-5 h-5 ml-2" />
+        </Button>
+        
+        <button
+          onClick={() => {
+            if (!formData.eventType || !formData.groupSize || !formData.duration || !formData.budgetRange) {
+              toast.error('Please complete all fields');
+              return;
+            }
+            setCurrentStep(2);
+          }}
+          className="w-full text-sm text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          Skip to Event Details →
+        </button>
+      </div>
     </motion.div>
   );
 
@@ -860,6 +883,91 @@ export function CorporateMICEPlanningFlow({ subCategory, onBack }: CorporateMICE
   );
 
   // ========================================
+  // STEP 1.5: ADVANCED CONFIGURATION (Category-Specific)
+  // ========================================
+  const renderAdvancedConfiguration = () => {
+    const updateFormData = (field: string, value: any) => {
+      setFormData({ ...formData, [field]: value });
+    };
+
+    let ConfigComponent = null;
+    
+    switch (subCategory.id) {
+      case 1: // Conferences & Exhibitions
+        ConfigComponent = ConferencesConfig;
+        break;
+      case 2: // Board Meetings & AGMs
+        ConfigComponent = BoardMeetingsConfig;
+        break;
+      case 3: // Incentive Trips & Rewards
+        ConfigComponent = IncentiveTripsConfig;
+        break;
+      case 4: // Team Building
+        ConfigComponent = TeamBuildingConfig;
+        break;
+      case 5: // Trade Shows
+        ConfigComponent = TradeShowsConfig;
+        break;
+      case 6: // Corporate Training
+        ConfigComponent = TrainingConfig;
+        break;
+      default:
+        return null;
+    }
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -20 }}
+        className="space-y-6"
+      >
+        {/* Header */}
+        <div className="bg-white rounded-3xl p-6 shadow-lg">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-purple-600" />
+            </div>
+            <h2 className="text-xl font-bold" style={{ color: corporateTheme.primary }}>
+              Advanced Configuration
+            </h2>
+          </div>
+          <p className="text-sm text-gray-600">
+            Customize your event with premium features and specialized options
+          </p>
+        </div>
+
+        {/* Category-Specific Configuration */}
+        {ConfigComponent && <ConfigComponent formData={formData} onUpdate={updateFormData} />}
+
+        {/* Navigation */}
+        <div className="flex gap-3">
+          <Button
+            onClick={() => setShowAdvancedConfig(false)}
+            variant="outline"
+            className="flex-1 h-12 rounded-full"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back
+          </Button>
+          <Button
+            onClick={() => {
+              setShowAdvancedConfig(false);
+              setCurrentStep(2);
+              toast.success('Advanced configuration saved!');
+            }}
+            className="flex-1 h-12 rounded-full text-base font-semibold"
+            style={{ backgroundColor: corporateTheme.accent }}
+          >
+            Continue to Event Details
+            <ChevronRight className="w-5 h-5 ml-2" />
+          </Button>
+        </div>
+      </motion.div>
+    );
+  };
+
+  // ========================================
   // PROGRESS INDICATOR
   // ========================================
   const renderProgressIndicator = () => {
@@ -876,7 +984,7 @@ export function CorporateMICEPlanningFlow({ subCategory, onBack }: CorporateMICE
       <div className="bg-white rounded-2xl p-4 shadow-md mb-6">
         <div className="flex items-center justify-between">
           {steps.map((step, index) => (
-            <React.Fragment key={step.num}>
+            <div key={step.num} className="flex items-center flex-1 last:flex-none">
               <div className="flex flex-col items-center">
                 <div
                   className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
@@ -892,7 +1000,7 @@ export function CorporateMICEPlanningFlow({ subCategory, onBack }: CorporateMICE
               {index < steps.length - 1 && (
                 <div className={`flex-1 h-1 mx-1 rounded ${currentStep > step.num ? 'bg-green-600' : 'bg-gray-200'}`} />
               )}
-            </React.Fragment>
+            </div>
           ))}
         </div>
       </div>
@@ -944,19 +1052,66 @@ export function CorporateMICEPlanningFlow({ subCategory, onBack }: CorporateMICE
 
       {/* Content */}
       <div className="px-6 -mt-4 pb-8">
-        {/* Progress Indicator */}
-        {renderProgressIndicator()}
+        {/* Progress Indicator - Only show when not in advanced config */}
+        {!showAdvancedConfig && renderProgressIndicator()}
 
         {/* Step Content */}
         <AnimatePresence mode="wait">
-          {currentStep === 1 && renderRequirementSelection()}
-          {currentStep === 2 && renderEventDetails()}
-          {currentStep === 3 && renderServicesAddons()}
-          {currentStep === 4 && renderBudgetSummary()}
-          {currentStep === 5 && renderProposalApproval()}
-          {currentStep === 6 && renderBookingReady()}
+          {showAdvancedConfig ? (
+            renderAdvancedConfiguration()
+          ) : (
+            <>
+              {currentStep === 1 && renderRequirementSelection()}
+              {currentStep === 2 && renderEventDetails()}
+              {currentStep === 3 && renderServicesAddons()}
+              {currentStep === 4 && renderBudgetSummary()}
+              {currentStep === 5 && renderProposalApproval()}
+              {currentStep === 6 && renderBookingReady()}
+            </>
+          )}
         </AnimatePresence>
       </div>
+
+      {/* Sticky Booking Bar Footer */}
+      {currentStep >= 4 && !showAdvancedConfig && (
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t-2 border-gray-200 px-6 py-4 shadow-2xl">
+          <div className="max-w-md mx-auto">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-1">
+                  {[1, 2, 3].map((step) => (
+                    <div
+                      key={step}
+                      className={`h-2 w-8 rounded-full ${
+                        step <= (currentStep - 3) ? 'bg-green-600' : 'bg-gray-200'
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-xs font-semibold text-gray-700">
+                  Step {Math.min(currentStep - 3, 3)}/3
+                </span>
+              </div>
+              <span className="text-xs text-gray-600">
+                {currentStep === 4 && 'Review Budget'}
+                {currentStep === 5 && 'Receive Proposal'}
+                {currentStep === 6 && 'Execute'}
+              </span>
+            </div>
+            <Button
+              onClick={() => {
+                if (currentStep < 6) setCurrentStep(currentStep + 1);
+              }}
+              className="w-full h-12 rounded-full text-base font-bold"
+              style={{ backgroundColor: corporateTheme.accent }}
+              disabled={currentStep === 6}
+            >
+              {currentStep === 6 ? 'Booking Complete' : 'Request Executive Proposal'}
+              {currentStep < 6 && <ChevronRight className="w-5 h-5 ml-2" />}
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
