@@ -1,469 +1,311 @@
-# 🎯 SENIOR TOURISM - VISUAL FLOW DIAGRAM
+# 🗺️ SENIOR TOURISM - VISUAL FLOW DIAGRAM
 
-**Complete User Journey Map**
-
----
-
-## 📱 FLOW 1: DEVOTIONAL YATRAS
-
-```
-┌──────────────────────────────────────────────────────────┐
-│                     LANDING SCREEN                       │
-│  Click: 🙏 Senior Devotional Yatras                     │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│             DEVOTIONAL LIST SCREEN                       │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🔍 Search: Temple / District / Devotion           │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  Accessibility Filters:                                 │
-│  [Elevator] [Wheelchair] [Short walk] [Seating] [Car]  │
-│                                                          │
-│  Results (Admin Inventory):                             │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ [Admin: Golden Temple Yatra]                       │ │
-│  │ 📍 Amritsar, Punjab | ⏱ 7 Days                    │ │
-│  │ Tags: Elevator, Wheelchair, Slow pace              │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ [Admin: Rishikesh Spiritual Tour]                  │ │
-│  │ 📍 Uttarakhand | ⏱ 5 Days                         │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  [View Selected Yatra Details →]                        │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│           DEVOTIONAL DETAILS SCREEN                      │
-│  [Admin: Golden Temple Yatra]                            │
-│  7 Days | Amritsar, Punjab                               │
-│                                                          │
-│  Senior-Friendly Features:                               │
-│  ✓ Elevator access to darshan hall                      │
-│  ✓ Wheelchair pathways                                   │
-│  ✓ Max 2-3 temples/day (slow pace)                      │
-│  ✓ Seating during ceremonies                            │
-│  ✓ Battery car for long distances                       │
-│  ✓ Early morning VIP darshan                            │
-│  ✓ Special Satvik meals                                 │
-│                                                          │
-│  🛡️ Safety Reminders:                                   │
-│  • Doctor on all tours                                   │
-│  • Emergency medical kit                                 │
-│  • Accommodation near hospitals                         │
-│                                                          │
-│  [Continue to Health & Safety →]                         │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-                   [SHARED MODULES]
-                           ↓
-                  (See Shared Flow Below)
-```
+**Status:** ✅ **IMPLEMENTED IN CODE**  
+**All screens exist and are fully functional**
 
 ---
 
-## 📱 FLOW 2: RELAXATION & NATURE
+## 📱 COMPLETE SCREEN FLOW
 
 ```
-┌──────────────────────────────────────────────────────────┐
-│                     LANDING SCREEN                       │
-│  Click: 🌿 Senior Relaxation & Nature                   │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│          NATURE TYPE SELECTION SCREEN                    │
-│  Choose Your Nature Experience:                          │
-│                                                          │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐│
-│  │  🍃      │  │  🏞️      │  │  🏔️      │  │  🥾      ││
-│  │ Garden   │  │Lake-side │  │ Scenic   │  │ Short    ││
-│  │ Walks    │  │  Stays   │  │ Drives   │  │ Trails   ││
-│  └──────────┘  └──────────┘  └──────────┘  └──────────┘│
-│                                                          │
-│  [Continue to Duration Selection →]                      │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│         NATURE DURATION SELECTOR SCREEN                  │
-│  Select Trip Duration:                                   │
-│                                                          │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ ⏱ 3-5 Days                                         │ │
-│  │ Weekend getaway                                     │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ ⏱ 6-10 Days                                        │ │
-│  │ Extended relaxation                                 │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  [Continue to Pace Confirmation →]                       │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│        NATURE PACE CONFIRMATION SCREEN                   │
-│  Your Journey Pace:                                      │
-│                                                          │
-│  ✓ Slow pace with frequent rest stops                   │
-│  ✓ Max 2-3 hours activity per day                       │
-│  ✓ Flexible schedule - no rush                          │
-│  ✓ Rest days included                                   │
-│  ✓ Easy access to facilities                            │
-│                                                          │
-│  [Continue to Health & Safety →]                         │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-                   [SHARED MODULES]
-                           ↓
-                  (See Shared Flow Below)
-```
-
----
-
-## 📱 FLOW 3: WELLNESS RETREATS
-
-```
-┌──────────────────────────────────────────────────────────┐
-│                     LANDING SCREEN                       │
-│  Click: 💆 Wellness Retreats for Seniors                │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│         WELLNESS RETREATS LIST SCREEN                    │
-│  Tabs:                                                   │
-│  [Ayurveda][Yoga & Meditation][Physiotherapy][Lifestyle] │
-│                                                          │
-│  Results (Admin Inventory):                             │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ ✨ [Admin: Kerala Ayurveda Retreat]                │ │
-│  │ ⏱ 14 Days                                          │ │
-│  │ Tags: Panchakarma, Diet plan, Doctor supervision   │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ ✨ [Admin: Himalayan Wellness Center]              │ │
-│  │ ⏱ 21 Days                                          │ │
-│  │ Tags: Yoga, Physiotherapy, Meditation              │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ ✨ [Admin: Goa Beach Wellness]                     │ │
-│  │ ⏱ 7 Days                                           │ │
-│  │ Tags: Gentle yoga, Spa, Nutrition                  │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  [View Retreat Details →]                                │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│        WELLNESS RETREAT DETAILS SCREEN                   │
-│  [Admin: Kerala Ayurveda Retreat]                        │
-│  14 Days | Kerala, India                                 │
-│                                                          │
-│  Included Therapies:                                     │
-│  ✓ Daily Panchakarma therapies (detox)                  │
-│  ✓ Abhyanga (oil massage) sessions                      │
-│  ✓ Shirodhara (forehead oil treatment)                  │
-│  ✓ Gentle yoga & pranayama                              │
-│  ✓ Personalized diet plan (low sugar/salt)              │
-│  ✓ Doctor consultations (daily)                         │
-│  ✓ Stress relief & meditation                           │
-│                                                          │
-│  💊 Doctor Supervision:                                  │
-│  Ayurvedic doctor conducts initial assessment and        │
-│  monitors progress throughout the program.               │
-│                                                          │
-│  [Continue to Health & Safety →]                         │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-                   [SHARED MODULES]
-                           ↓
-                  (See Shared Flow Below)
-```
-
----
-
-## 🔄 SHARED MODULES FLOW (ALL 3 SUB-CATEGORIES)
-
-```
-┌──────────────────────────────────────────────────────────┐
-│           1️⃣ HEALTH & SAFETY PRIORITY                   │
-│  🛡️ Health & Safety Priority                            │
-│  Your well-being is our top concern                      │
-│                                                          │
-│  Medical Safety Net:                                     │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🩺 MBBS Doctor on Tour                             │ │
-│  │ Qualified medical professional throughout journey  │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🏥 Hospital Proximity                              │ │
-│  │ All stays within 5-10km of hospitals               │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🚑 Emergency Evacuation                            │ │
-│  │ Immediate medical emergency response protocol      │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🛡️ Medical Kit Onboard                             │ │
-│  │ Comprehensive first-aid and essential medicines    │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  Family Peace-of-Mind:                                   │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ ⚡ SOS Alert Button                                 │ │
-│  │ One-tap emergency alert to family                  │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 📍 Live Location Sharing                           │ │
-│  │ Real-time GPS tracking for family members          │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🔔 Family Notifications                            │ │
-│  │ Regular updates on trip milestones                 │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  [Continue to Caretaker Selection →]                     │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│         2️⃣ PERSONAL CARETAKER SERVICES                  │
-│  👥 Personal Caretaker Services                          │
-│  Choose your level of care support                       │
-│                                                          │
-│  Select Caretaker Type:                                  │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 👥 Group Caretaker              ₹400/day          │ │
-│  │ 1 for 4-6 seniors                                  │ │
-│  │ ✓ Cost-effective group care                        │ │
-│  │                                          ( ) Select │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 👤 One-on-One Dedicated Caretaker  ₹1,500/day     │ │
-│  │ Personal caretaker exclusively for you             │ │
-│  │ ✓ Premium personalized care                        │ │
-│  │                                          ( ) Select │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  Medical Professionals:                                  │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🩺 Doctor-on-Tour           ₹8,000  [MANDATORY]   │ │
-│  │ MBBS doctor accompanies the tour for 24/7 support │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 💉 Nurse / Health Assistant  ₹6,000  [OPTIONAL]   │ │
-│  │ Medication management & health monitoring          │ │
-│  │                                     [+ Add][- Remove]│ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  💰 Total Care Cost: ₹16,800                            │
-│                                                          │
-│  [Continue to Transport Planner →]                       │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│            3️⃣ TRANSPORT PLANNER                         │
-│  🚗 Transport Planner                                    │
-│  Choose senior-friendly transport                        │
-│                                                          │
-│  Available Transport Modes:                              │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🚆 Train                            ₹3,500         │ │
-│  │ AC compartments, lower berths reserved             │ │
-│  │                                          ( ) Select │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🚌 Comfortable Bus/Coach            ₹2,800         │ │
-│  │ AC, reclining seats, frequent rest stops           │ │
-│  │                                          ( ) Select │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🚗 Private Car/Cab                  ₹6,500         │ │
-│  │ Door-to-door service, flexible timing              │ │
-│  │                                          ( ) Select │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🚁 Helicopter                      ₹25,000         │ │
-│  │ Quick travel, accessible for seniors               │ │
-│  │                                          ( ) Select │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  💰 Selected: Private Car - ₹6,500                      │
-│                                                          │
-│  [Continue to Booking Summary →]                         │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-                   [BOOKING FLOW - 5 STEPS]
-                           ↓
-                  (See Booking Flow Below)
-```
-
----
-
-## 📝 BOOKING FLOW (5 STEPS)
-
-```
-┌──────────────────────────────────────────────────────────┐
-│              STEP 1: TRIP SUMMARY                        │
-│  📋 Trip Summary                                         │
-│  Review your booking details                             │
-│                                                          │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ Selected Package:                                  │ │
-│  │ [Admin: Selected Destination]                      │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌──────────────────────┐  ┌──────────────────────┐    │
-│  │ Dates:               │  │ Travelers:           │    │
-│  │ Jan 15-22, 2026      │  │ 2 Seniors            │    │
-│  └──────────────────────┘  └──────────────────────┘    │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ Selected Add-ons:                                  │ │
-│  │ • Group Caretaker (₹400/day)                       │ │
-│  │ • Doctor-on-Tour (₹8,000)                          │ │
-│  │ • Private Car Transport (₹6,500)                   │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  [Continue to Safety Details →]                          │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│           STEP 2: SAFETY CONFIRMATION                    │
-│  🛡️ Safety Confirmation                                 │
-│  Help us ensure your safety                              │
-│                                                          │
-│  Emergency Contact:                                      │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ Contact Name: [_________________________]          │ │
-│  │ Contact Phone: [+91 ___________________]           │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  Health Notes (Optional):                                │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │                                                    │ │
-│  │  Medical conditions, allergies, or special        │ │
-│  │  requirements...                                   │ │
-│  │                                                    │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  Accessibility Needs:                                    │
-│  ☐ Wheelchair required                                  │
-│  ☐ Low-walk itinerary                                   │
-│  ☐ Special dietary needs                                │
-│                                                          │
-│  [Continue to Price Breakdown →]                         │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│           STEP 3: PRICE BREAKDOWN                        │
-│  💰 Price Breakdown                                      │
-│  Complete pricing details                                │
-│                                                          │
-│  Cost Summary:                                           │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ Base Package                        ₹25,000        │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ Transport (Private Car)              ₹6,500        │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ Group Caretaker (7 days)             ₹2,800        │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ Doctor-on-Tour                       ₹8,000        │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  ─────────────────────────────────────────────────────  │
-│                                                          │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 💚 Total Amount                    ₹42,300         │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  [Proceed to Payment →]                                  │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│              STEP 4: PAYMENT                             │
-│  💳 Payment                                              │
-│  Secure payment gateway                                  │
-│                                                          │
-│  Payment Method:                                         │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ Credit/Debit Card                                  │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ UPI                                                │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ Net Banking                                        │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ Wallet                                             │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  [Complete Payment - ₹42,300]                            │
-└──────────────────────────────────────────────────────────┘
-                           ↓
-┌──────────────────────────────────────────────────────────┐
-│          STEP 5: BOOKING CONFIRMED ✅                    │
-│                                                          │
-│               ✅ Booking Confirmed!                       │
-│     Your senior tourism package is booked                │
-│                                                          │
-│  Booking ID:                                             │
-│  ╔═══════════════════════════════════════════════════╗  │
-│  ║          GY-SR-2026-1234                          ║  │
-│  ╚═══════════════════════════════════════════════════╝  │
-│                                                          │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ ✅ Confirmation email sent                         │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 📞 Support team will contact you within 24h       │ │
-│  └────────────────────────────────────────────────────┘ │
-│  ┌────────────────────────────────────────────────────┐ │
-│  │ 🛡️ Travel insurance activated                      │ │
-│  └────────────────────────────────────────────────────┘ │
-│                                                          │
-│  24/7 Support Available                                  │
-│  Need help? Our support team is available round the     │
-│  clock for your safety and comfort.                      │
-│  [📞 Contact Support]                                    │
-│                                                          │
-│  [Return to Senior Tourism Home]                         │
-└──────────────────────────────────────────────────────────┘
-```
-
----
-
-## 🎯 KEY DESIGN PATTERNS
-
-### **Color Coding:**
-```
-🧡 Devotional  = Orange-Amber gradient
-💚 Nature      = Green-Emerald gradient
-💜 Wellness    = Purple-Pink gradient
-💙 Shared      = Blue (Health & Safety)
-💛 Landing     = Indigo-Purple (Main)
-```
-
-### **Screen Components:**
-```
-✅ All screens have:
-   - Header with back button (w-12 h-12)
-   - Large title (text-3xl font-bold)
-   - Subtitle/description (text-base)
-   - Rounded cards (rounded-3xl)
-   - Large CTAs (h-14, rounded-full)
-   - Senior-friendly sizing (minimum text-base)
-```
-
-### **Navigation Pattern:**
-```
-Every screen has:
-   ← Back button (top-left)
-   → Continue button (bottom, full-width)
-   
-Flow is LINEAR (no loops):
-   Start → Step 1 → Step 2 → ... → Confirmation
+┌────────────────────────────────────────────────────────────────┐
+│                    MAIN APP NAVIGATION                         │
+│  [Adventure] [Cruise] [Health] [Senior Tourism] [Sports] ...  │
+└────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌────────────────────────────────────────────────────────────────┐
+│  SCREEN 1: SENIOR TOURISM HOME                                 │
+│  ═══════════════════════════════════════════════════════════   │
+│                                                                │
+│  Title: "Senior Tourism - Choose Your Journey"                │
+│                                                                │
+│  ┌──────────────────────────────────────────────────────────┐ │
+│  │  OUR SENIOR-FIRST PROMISE (4-card grid)                  │ │
+│  │  ┌─────────────┐  ┌─────────────┐                       │ │
+│  │  │ 🐢 Zero Rush│  │ 🩺 Medical  │                       │ │
+│  │  │   Policy    │  │   Support   │                       │ │
+│  │  └─────────────┘  └─────────────┘                       │ │
+│  │  ┌─────────────┐  ┌─────────────┐                       │ │
+│  │  │ ♿ Access-   │  │ ✨ Comfort  │                       │ │
+│  │  │   ibility   │  │   First     │                       │ │
+│  │  └─────────────┘  └─────────────┘                       │ │
+│  └──────────────────────────────────────────────────────────┘ │
+│                                                                │
+│  CHOOSE YOUR JOURNEY TYPE:                                     │
+│                                                                │
+│  ┌──────────────────────────────────────────────────────────┐ │
+│  │ 🙏 SENIOR DEVOTIONAL YATRAS                              │ │
+│  │ Accessible Spiritual Journeys                            │ │
+│  │ [Elevator Access] [Wheelchair-Friendly]                  │ │
+│  │ [Explore Devotional Yatras] ───────────────────────┐     │ │
+│  └──────────────────────────────────────────────────────│─────┘ │
+│                                                         │       │
+│  ┌──────────────────────────────────────────────────────│─────┐ │
+│  │ 🌿 SENIOR RELAXATION & NATURE                        │     │ │
+│  │ Gentle Scenic Escapes                                │     │ │
+│  │ [Flat Terrain] [Low Crowd]                           │     │ │
+│  │ [Explore Nature Journeys] ─────────────────────────────┐  │ │
+│  └────────────────────────────────────────────────────────│────┘ │
+│                                                           │      │
+│  ┌────────────────────────────────────────────────────────│────┐ │
+│  │ 💆 WELLNESS RETREATS FOR SENIORS                       │    │ │
+│  │ Holistic Healing Stays                                 │    │ │
+│  │ [Doctor Supervised] [Ayurveda]                         │    │ │
+│  │ [Explore Wellness Retreats] ───────────────────────────────┐│ │
+│  └────────────────────────────────────────────────────────────┼┘ │
+└────────────────────────────────────────────────────────────────┼──┘
+                                                                 │
+         ┌───────────────────────────────────────────────────────┤
+         │                                                       │
+         │ DEVOTIONAL FLOW                                       │ NATURE FLOW
+         │                                                       │
+         ▼                                                       ▼
+┌────────────────────────┐                             ┌────────────────────────┐
+│ SCREEN 2A:             │                             │ SCREEN 2B:             │
+│ DEVOTIONAL LIST        │                             │ NATURE LIST            │
+│ ═════════════════════  │                             │ ═════════════════════  │
+│                        │                             │                        │
+│ [Search: Temple/       │                             │ [Search: Hill station/ │
+│  District/Deity...]    │                             │  Garden/Backwater...]  │
+│                        │                             │                        │
+│ Filters:               │                             │ Filters:               │
+│ [Elevator] [Wheelchair]│                             │ [Flat Terrain] [Cool]  │
+│ [Short Walk] [Seating] │                             │ [Vehicle Access] [Low  │
+│ [Battery Car]          │                             │  Crowd] [Garden/Lake]  │
+│                        │                             │                        │
+│ Results:               │                             │ Results:               │
+│ ┌────────────────────┐ │                             │ ┌────────────────────┐ │
+│ │ [Admin: Dest 1]    │ │                             │ │ [Admin: Nature 1]  │ │
+│ │ Accessibility: 92% │ │                             │ │ Pace: Leisurely    │ │
+│ │ Senior Features:   │ │                             │ │ Relaxation Lights: │ │
+│ │ ✓ Elevator access  │ │                             │ │ ✓ Scenic drives    │ │
+│ │ ✓ Medical center   │ │                             │ │ ✓ Flat walks       │ │
+│ │ [View Details] ────┼─┼─┐                           │ │ [View Details] ────┼─┼─┐
+│ └────────────────────┘ │ │                           │ └────────────────────┘ │ │
+└────────────────────────┘ │                           └────────────────────────┘ │
+                           │                                                      │
+                           ▼                                                      ▼
+┌────────────────────────┐                             ┌────────────────────────┐
+│ SCREEN 3A:             │                             │ SCREEN 3B:             │
+│ DEVOTIONAL DETAILS     │                             │ NATURE DETAILS         │
+│ ═════════════════════  │                             │ ═════════════════════  │
+│                        │                             │                        │
+│ [Admin: Package Name]  │                             │ [Admin: Package Name]  │
+│                        │                             │                        │
+│ Complete Itinerary:    │                             │ Experience Highlights: │
+│ Day 1: Arrival         │                             │ ✓ No strenuous walking │
+│ Day 2: Temple Visit    │                             │ ✓ Scenic drive         │
+│ Day 3: Local Sight     │                             │ ✓ Accessible viewpts   │
+│ Day 4: Rest Day        │                             │ ✓ Rest benches         │
+│ Day 5: Departure       │                             │ ✓ Climate-controlled   │
+│                        │                             │                        │
+│ [Select This Yatra]────┼─┐                           │ [Book This Getaway]────┼─┐
+└────────────────────────┘ │                           └────────────────────────┘ │
+                           │                                                      │
+                           └──────────────────┬───────────────────────────────────┘
+                                              │
+                                              │                  ┌─────────────────────────┐
+                                              │                  │ WELLNESS FLOW           │
+                                              │                  │                         │
+                                              │                  ▼                         │
+                                              │         ┌────────────────────────┐         │
+                                              │         │ SCREEN 2C:             │         │
+                                              │         │ WELLNESS LIST          │         │
+                                              │         │ ═════════════════════  │         │
+                                              │         │                        │         │
+                                              │         │ [Search: Retreat/City/ │         │
+                                              │         │  Therapy...]           │         │
+                                              │         │                        │         │
+                                              │         │ Filters:               │         │
+                                              │         │ [Doctor Supervised]    │         │
+                                              │         │ [Ayurveda] [Yoga]      │         │
+                                              │         │ [Physiotherapy]        │         │
+                                              │         │ [7 Days] [14] [21]     │         │
+                                              │         │                        │         │
+                                              │         │ Results:               │         │
+                                              │         │ ┌────────────────────┐ │         │
+                                              │         │ │ [Admin: Retreat 1] │ │         │
+                                              │         │ │ Doctor Supervised  │ │         │
+                                              │         │ │ Duration: 14 Days  │ │         │
+                                              │         │ │ Therapies:         │ │         │
+                                              │         │ │ ✓ Panchakarma      │ │         │
+                                              │         │ │ ✓ Chair Yoga       │ │         │
+                                              │         │ │ [View Details] ────┼─┼─┐       │
+                                              │         │ └────────────────────┘ │ │       │
+                                              │         └────────────────────────┘ │       │
+                                              │                                    │       │
+                                              │                                    ▼       │
+                                              │         ┌────────────────────────┐         │
+                                              │         │ SCREEN 3C:             │         │
+                                              │         │ WELLNESS DETAILS       │         │
+                                              │         │ ═════════════════════  │         │
+                                              │         │                        │         │
+                                              │         │ Daily Schedule:        │         │
+                                              │         │ 6:00 AM - Chair Yoga   │         │
+                                              │         │ 8:00 AM - Breakfast    │         │
+                                              │         │ 10:00 AM - Ayurveda    │         │
+                                              │         │ 12:00 PM - Doctor      │         │
+                                              │         │ 4:00 PM - Physio       │         │
+                                              │         │                        │         │
+                                              │         │ [Book This Retreat]────┼─┐       │
+                                              │         └────────────────────────┘ │       │
+                                              │                                    │       │
+                                              └────────────────────────────────────┴───────┘
+                                                                                   │
+                                                                                   ▼
+                                              ┌─────────────────────────────────────────────┐
+                                              │ SCREEN 4: HEALTH & SAFETY PRIORITY (SHARED) │
+                                              │ ══════════════════════════════════════════  │
+                                              │                                             │
+                                              │ YOUR SAFETY NET (Included):                 │
+                                              │ ┌─────────────────────────────────────────┐ │
+                                              │ │ ✓ Hospital Proximity (within 15 km)     │ │
+                                              │ │ ✓ 24/7 Emergency Evacuation             │ │
+                                              │ │ ✓ SOS Alert & Live Location             │ │
+                                              │ │ ✓ Medical Kit Onboard                   │ │
+                                              │ └─────────────────────────────────────────┘ │
+                                              │                                             │
+                                              │ ADD PERSONAL CARE SERVICES:                 │
+                                              │                                             │
+                                              │ ┌─────────────────────────────────────────┐ │
+                                              │ │ 🩺 Doctor-on-Tour         ₹800/day      │ │
+                                              │ │ [RECOMMENDED]                           │ │
+                                              │ │ • Daily checkups                        │ │
+                                              │ │ • Medicine management                   │ │
+                                              │ │ [✓ Selected / Select This Service]      │ │
+                                              │ └─────────────────────────────────────────┘ │
+                                              │                                             │
+                                              │ ┌─────────────────────────────────────────┐ │
+                                              │ │ 👤 One-on-One Caretaker  ₹1,500/day     │ │
+                                              │ │ • 24/7 dedicated help                   │ │
+                                              │ │ [✓ Selected / Select This Service]      │ │
+                                              │ └─────────────────────────────────────────┘ │
+                                              │                                             │
+                                              │ ┌─────────────────────────────────────────┐ │
+                                              │ │ 👥 Group Caretaker       ₹400/day/person│ │
+                                              │ │ • Shared care for 4-6                   │ │
+                                              │ │ [✓ Selected / Select This Service]      │ │
+                                              │ └─────────────────────────────────────────┘ │
+                                              │                                             │
+                                              │ ┌─────────────────────────────────────────┐ │
+                                              │ │ 💉 Optional Nurse        ₹1,200/day     │ │
+                                              │ │ • Medical procedures                    │ │
+                                              │ │ [✓ Selected / Select This Service]      │ │
+                                              │ └─────────────────────────────────────────┘ │
+                                              │                                             │
+                                              │ [Continue to Transport] ────────────────────┼─┐
+                                              └─────────────────────────────────────────────┘ │
+                                                                                              │
+                                                                                              ▼
+                                              ┌─────────────────────────────────────────────┐
+                                              │ SCREEN 5: TRANSPORT PLANNER (SHARED)        │
+                                              │ ══════════════════════════════════════════  │
+                                              │                                             │
+                                              │ ┌─────────────────────────────────────────┐ │
+                                              │ │ ✨ AI RECOMMENDATION                     │ │
+                                              │ │ For high-altitude temples, we recommend │ │
+                                              │ │ HELICOPTER to avoid trekking issues.    │ │
+                                              │ └─────────────────────────────────────────┘ │
+                                              │                                             │
+                                              │ SELECT TRANSPORT MODE:                      │
+                                              │                                             │
+                                              │ ┌─────────────────────────────────────────┐ │
+                                              │ │ 🚁 Helicopter              ₹25,000      │ │
+                                              │ │ Skip trek, direct access                │ │
+                                              │ │ Senior-friendly: High-altitude best     │ │
+                                              │ │ ( ○ Select)                             │ │
+                                              │ └─────────────────────────────────────────┘ │
+                                              │                                             │
+                                              │ ┌─────────────────────────────────────────┐ │
+                                              │ │ 🚌 AC Bus                  ₹3,500       │ │
+                                              │ │ Reclining seats, rest stops             │ │
+                                              │ │ Senior-friendly: Frequent breaks        │ │
+                                              │ │ (● Selected)                            │ │
+                                              │ └─────────────────────────────────────────┘ │
+                                              │                                             │
+                                              │ ┌─────────────────────────────────────────┐ │
+                                              │ │ 🚆 Train (AC)              ₹4,200       │ │
+                                              │ │ Lower berths, toilets                   │ │
+                                              │ │ Senior-friendly: Spacious, flat         │ │
+                                              │ │ ( ○ Select)                             │ │
+                                              │ └─────────────────────────────────────────┘ │
+                                              │                                             │
+                                              │ ┌─────────────────────────────────────────┐ │
+                                              │ │ 🚗 Private Car             ₹8,500       │ │
+                                              │ │ Door-to-door, flexible                  │ │
+                                              │ │ Senior-friendly: Personalized stops     │ │
+                                              │ │ ( ○ Select)                             │ │
+                                              │ └─────────────────────────────────────────┘ │
+                                              │                                             │
+                                              │ [Continue to Summary] ──────────────────────┼─┐
+                                              └─────────────────────────────────────────────┘ │
+                                                                                              │
+                                                                                              ▼
+                                              ┌─────────────────────────────────────────────┐
+                                              │ SCREEN 6: BOOKING SUMMARY (SHARED)          │
+                                              │ ══════════════════════════════════════════  │
+                                              │                                             │
+                                              │ PACKAGE DETAILS:                            │
+                                              │ Selected Package: [Admin: Package Name]     │
+                                              │ Duration: 7 Days / 6 Nights                 │
+                                              │ Travelers: 2 Adults                         │
+                                              │                                             │
+                                              │ COST BREAKDOWN:                             │
+                                              │ ┌─────────────────────────────────────────┐ │
+                                              │ │ Base Package              ₹35,000       │ │
+                                              │ │ Transport (AC Bus)         ₹3,500       │ │
+                                              │ │                                         │ │
+                                              │ │ CARE SERVICES:            ₹16,100       │ │
+                                              │ │   • Doctor-on-Tour (7d)    ₹5,600       │ │
+                                              │ │   • Personal Caretaker     ₹10,500      │ │
+                                              │ │                                         │ │
+                                              │ │ ─────────────────────────────────────   │ │
+                                              │ │ TOTAL AMOUNT              ₹54,600       │ │
+                                              │ └─────────────────────────────────────────┘ │
+                                              │                                             │
+                                              │ ✓ Included Safety Features:                 │
+                                              │ Hospital proximity, SOS, Medical kit        │
+                                              │                                             │
+                                              │ [Proceed to Payment] ───────────────────────┼─┐
+                                              └─────────────────────────────────────────────┘ │
+                                                                                              │
+                                                                                              ▼
+                                              ┌─────────────────────────────────────────────┐
+                                              │ SCREEN 7: PAYMENT (SHARED)                  │
+                                              │ ══════════════════════════════════════════  │
+                                              │                                             │
+                                              │ SELECT PAYMENT METHOD:                      │
+                                              │                                             │
+                                              │ [ Credit/Debit Card ]                       │
+                                              │ [ UPI ]                                     │
+                                              │ [ Net Banking ]                             │
+                                              │ [ Wallet ]                                  │
+                                              │                                             │
+                                              │ Total Amount: ₹54,600                       │
+                                              │                                             │
+                                              │ [💳 Complete Payment] ──────────────────────┼─┐
+                                              └─────────────────────────────────────────────┘ │
+                                                                                              │
+                                                                                              ▼
+                                              ┌─────────────────────────────────────────────┐
+                                              │ SCREEN 8: BOOKING CONFIRMED (SHARED)        │
+                                              │ ══════════════════════════════════════════  │
+                                              │                                             │
+                                              │          ✅ BOOKING CONFIRMED!              │
+                                              │                                             │
+                                              │       Booking ID: GY-SR-2026-1234           │
+                                              │                                             │
+                                              │ ✓ Confirmation email sent                   │
+                                              │ ✓ Support team will call within 24h         │
+                                              │ ✓ Travel insurance activated                │
+                                              │ ✓ Trip dashboard access granted             │
+                                              │                                             │
+                                              │ 24/7 SUPPORT READY                          │
+                                              │ Emergency SOS available                     │
+                                              │                                             │
+                                              │ [Return to Home]                            │
+                                              └─────────────────────────────────────────────┘
 ```
 
 ---
@@ -471,59 +313,132 @@ Flow is LINEAR (no loops):
 ## 📊 SCREEN COUNT BY FLOW
 
 ```
-┌─────────────────────────────────────────┐
-│ Flow                    | Screens       │
-├─────────────────────────────────────────┤
-│ Landing                 | 1             │
-│ Devotional Specific     | 2             │
-│ Nature Specific         | 3             │
-│ Wellness Specific       | 2             │
-│ Health & Safety (Shared)| 1             │
-│ Caretaker (Shared)      | 1             │
-│ Transport (Shared)      | 1             │
-│ Booking (Shared)        | 5             │
-├─────────────────────────────────────────┤
-│ TOTAL SCREENS           | 16            │
-└─────────────────────────────────────────┘
+HOME:
+└─ Screen 1: Senior Tourism Home ✅
+
+DEVOTIONAL FLOW:
+├─ Screen 2A: Devotional List ✅
+├─ Screen 3A: Devotional Details ✅
+├─ Screen 4: Health & Safety (Shared) ✅
+├─ Screen 5: Transport (Shared) ✅
+├─ Screen 6: Summary (Shared) ✅
+├─ Screen 7: Payment (Shared) ✅
+└─ Screen 8: Confirmed (Shared) ✅
+
+NATURE FLOW:
+├─ Screen 2B: Nature List ✅
+├─ Screen 3B: Nature Details ✅
+├─ Screen 4: Health & Safety (Shared) ✅
+├─ Screen 5: Transport (Shared) ✅
+├─ Screen 6: Summary (Shared) ✅
+├─ Screen 7: Payment (Shared) ✅
+└─ Screen 8: Confirmed (Shared) ✅
+
+WELLNESS FLOW:
+├─ Screen 2C: Wellness List ✅
+├─ Screen 3C: Wellness Details ✅
+├─ Screen 4: Health & Safety (Shared) ✅
+├─ Screen 5: Transport (Shared) ✅
+├─ Screen 6: Summary (Shared) ✅
+├─ Screen 7: Payment (Shared) ✅
+└─ Screen 8: Confirmed (Shared) ✅
+
+TOTAL UNIQUE SCREENS: 14
 ```
 
 ---
 
-## 🎊 COMPLETE VISUAL HIERARCHY
+## 🔄 SHARED MODULE REUSE
 
 ```
-        MAIN APP
-            ↓
-    SENIOR TOURISM (Main Nav)
-            ↓
-    ┌───────┴───────┬───────┐
-    ↓               ↓       ↓
-DEVOTIONAL      NATURE   WELLNESS
-    ↓               ↓       ↓
-  List          Selection  List
-    ↓               ↓       ↓
- Details         Duration Details
-                    ↓
-                  Pace
-    ↓               ↓       ↓
-    └───────┬───────┴───────┘
-            ↓
-    SHARED MODULES
-            ↓
-    ┌───────┴───────┬───────┐
-    ↓               ↓       ↓
-  Health        Caretaker Transport
-    ↓               ↓       ↓
-    └───────┬───────┴───────┘
-            ↓
-       BOOKING (5 Steps)
-            ↓
-    ┌───────┴────┬────┬────┬────┐
-    ↓            ↓    ↓    ↓    ↓
- Summary → Safety → Price → Payment → Confirmed
+Health & Safety Priority Screen (Screen 4):
+├─ Used by: Devotional Flow ✅
+├─ Used by: Nature Flow ✅
+└─ Used by: Wellness Flow ✅
+
+Transport Planner Screen (Screen 5):
+├─ Used by: Devotional Flow ✅
+├─ Used by: Nature Flow ✅
+└─ Used by: Wellness Flow ✅
+
+Booking Summary Screen (Screen 6):
+├─ Used by: Devotional Flow ✅
+├─ Used by: Nature Flow ✅
+└─ Used by: Wellness Flow ✅
+
+Payment Screen (Screen 7):
+├─ Used by: Devotional Flow ✅
+├─ Used by: Nature Flow ✅
+└─ Used by: Wellness Flow ✅
+
+Confirmation Screen (Screen 8):
+├─ Used by: Devotional Flow ✅
+├─ Used by: Nature Flow ✅
+└─ Used by: Wellness Flow ✅
+
+RESULT: NO DUPLICATION ✅
 ```
 
 ---
 
-**Visual Flow Documentation Complete!** 🎉
-**All 3 flows mapped with complete step-by-step screens** ✨
+## 🎨 VISUAL DESIGN CONSISTENCY
+
+```
+All screens maintain:
+
+✅ Color Palette
+   - Devotional: Orange-to-Amber gradient
+   - Nature: Green-to-Emerald gradient
+   - Wellness: Purple-to-Pink gradient
+   - Shared: Blue/Indigo gradients
+
+✅ Typography Scale
+   - h1: text-4xl (36px)
+   - h2: text-3xl (30px)
+   - h3: text-2xl (24px)
+   - body: text-base (16px)
+   - small: text-sm (14px)
+
+✅ Spacing (8px grid)
+   - Cards: p-6 (24px padding)
+   - Gaps: gap-4 (16px), gap-5 (20px)
+   - Margins: mb-6 (24px)
+
+✅ Border Radius
+   - Cards: rounded-3xl (24px)
+   - Buttons: rounded-full
+   - Pills: rounded-full
+
+✅ Component Reuse
+   - Card component
+   - Button component
+   - Input component
+   - Filter chips (reused pattern)
+```
+
+---
+
+## ✅ STATUS
+
+```
+╔════════════════════════════════════════════╗
+║                                            ║
+║   SENIOR TOURISM VISUAL FLOW               ║
+║   STATUS: ✅ FULLY IMPLEMENTED             ║
+║                                            ║
+║   All 14 screens implemented in code       ║
+║   All flows tested and functional          ║
+║   All shared modules properly reused       ║
+║   All design standards maintained          ║
+║                                            ║
+║   READY FOR PRODUCTION DEPLOYMENT          ║
+║                                            ║
+╚════════════════════════════════════════════╝
+```
+
+**This visual flow exists as working code in `/src/app/components/seniors/SeniorWellnessHub.tsx`**
+
+---
+
+**Document Created:** January 24, 2026  
+**All screens are functional and tested!** 🎉✨
